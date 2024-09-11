@@ -7,4 +7,4 @@ TAP provides analyst access to multiple cyber crime forums in a single *TAP* all
 
 - [@snowkluster](https://www.github.com/snowkluster)
 - [@aparna2573](https://github.com/aparna2573)
-- Geetansh
+- [@geetansh14](https://github.com/geetansh14)
