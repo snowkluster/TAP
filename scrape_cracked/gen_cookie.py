@@ -3,8 +3,6 @@
 import random
 from playwright.sync_api import sync_playwright
 from time import sleep
-import json
-from pathlib import Path
 
 USER_AGENT = [
   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
@@ -82,5 +80,4 @@ with sync_playwright() as p:
     page.fill('input#password','h83eDH35T4zsxn')
     page.evaluate("document['getElementsByClassName']('member-full')[0]['submit']()")
     # page.click('input[value="Login"]')
-    cookies = context.cookies()
-    Path("cracked_cookies.json").write_text(json.dumps(cookies))
+    storage = context.storage_state(path="auth/state.json")
