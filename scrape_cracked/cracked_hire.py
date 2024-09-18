@@ -1,16 +1,13 @@
 #!/usr/bin/env python3
 
-# Work on the damn search API, Doesn't hold context and session storage for the browser instance
-# Need to figure out a method to keep browser in statis and only load entire file when done
-# Currently not working
-
+import csv
 import json
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 from playwright_stealth import stealth_sync
-# from bs4 import BeautifulSoup as bs
+from bs4 import BeautifulSoup as bs
 import random
-
+import re
 
 USER_AGENT = [
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
@@ -71,21 +68,94 @@ USER_AGENT = [
 
 user_agent = random.choice(USER_AGENT)
 
-SEARCH_TERM="airtel"
+def extract_table_data(html_content):
+    soup = bs(html_content, "html.parser")
+    table = soup.find("table", id="topiclist")
+    if not table:
+        raise ValueError("Table with ID 'topiclist' not found")
+
+    data = []
+
+    rows = table.select("tbody tr.inline_row")
+    for row in rows:
+        title_tag = row.select_one(".subject_new a")
+        title = title_tag.get_text(strip=True) if title_tag else None
+        post_url = title_tag["href"] if title_tag else None
+
+        author_tag = row.select_one(".author a")
+        author_name = author_tag.get_text(strip=True) if author_tag else None
+        author_url = author_tag["href"] if author_tag else None
+
+        date_tag = row.select_one(".thread-date")
+        date_value = date_tag.get_text(strip=True) if date_tag else None
+
+        views_count_tag = row.select_one('.stats-desc:-soup-contains("Views")')
+        views_count_str = (
+            row.select_one(".stats-count.theme_text").get_text(strip=True)
+            if views_count_tag
+            else None
+        )
+        views_count = (
+            float(re.sub(r"[^\d.]", "", views_count_str)) if views_count_str else None
+        )
+
+        replies_count_tag = row.select_one('.stats-desc:-soup-contains("Replies")')
+        replies_count_str = (
+            row.select_one(".stats-count.theme_text").get_text(strip=True)
+            if replies_count_tag
+            else None
+        )
+        replies_count = (
+            float(re.sub(r"[^\d.]", "", replies_count_str))
+            if replies_count_str
+            else None
+        )
+
+        data.append(
+            {
+                "post_name": title,
+                "post_author": author_name,
+                "post_author_url": author_url,
+                "post_link": post_url,
+                "post_date": date_value,
+                "views": int(views_count) if views_count is not None else None,
+                "replies": int(replies_count) if replies_count is not None else None,
+            }
+        )
+    return data
+
+def save_data_to_csv(data, filename):
+    file_exists = Path(filename).exists()
+    with open(filename, 'a', newline='', encoding='utf-8') as file:
+        fieldnames = ['post_name', 'post_author', 'post_author_url', 'post_link', 'post_date', 'views', 'replies']
+        writer = csv.DictWriter(file, fieldnames=fieldnames)
+        if not file_exists:
+            writer.writeheader()
+        writer.writerows(data)
 
 with sync_playwright() as p:
-    browser = p.firefox.launch(headless=False, slow_mo=1000)
+    browser = p.firefox.launch(headless=True, slow_mo=1000)
     context = browser.new_context(
         user_agent=f"{user_agent}",
         color_scheme="dark",
         viewport={"width": 1920, "height": 968},
-        storage_state="auth/state.json"
     )
     context.add_init_script(
         "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
     )
+    context.add_cookies(json.loads(Path("cracked_cookies.json").read_text()))
     page = context.new_page()
     stealth_sync(page)
-    page.goto("https://cracked.io/search.php")
-    page.fill("[name='keywords']", SEARCH_TERM)
-    page.click('input.button[type="submit"]')
+    page.goto("https://cracked.io/Forum-Hiring")
+    csv_filename = 'cracked_hire.csv'
+    while True:
+        page.wait_for_timeout(3000)
+        html_content = page.content()
+        page_data = extract_table_data(html_content)
+        save_data_to_csv(page_data, csv_filename)
+        next_button = page.query_selector("a.pagination_next")
+        if next_button and next_button.is_enabled():
+            next_button.click()
+            page.wait_for_timeout(3000)
+        else:
+            break
