@@ -7,9 +7,7 @@ from playwright.sync_api import sync_playwright
 from playwright_stealth import stealth_sync
 from bs4 import BeautifulSoup as bs
 import random
-import re
 
-# Need to test this, getting blocked because of IP range, bot detection
 
 USER_AGENT = [
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
@@ -72,7 +70,7 @@ user_agent = random.choice(USER_AGENT)
 
 def extract_table_data(html_content):
     soup = bs(html_content, "html.parser")
-    table = soup.find_all('table', class_='tborder clear')
+    table = soup.find('table', class_='tborder clear')
     if not table:
         raise ValueError("Table with class 'tborder clear' not found")
 
@@ -80,63 +78,45 @@ def extract_table_data(html_content):
 
     rows = table.select("tbody tr.inline_row")
     for row in rows:
-        title_tag = row.select_one(".subject_new a")
-        title = title_tag.get_text(strip=True) if title_tag else None
-        post_url = title_tag["href"] if title_tag else None
+        post_name = row.select_one('.subject_new a').get_text(strip=True)
+        author_name = row.select_one('.author a').get_text(strip=True)
+        author_url = row.select_one('.author a')['href']
+        post_url = row.select_one('.subject_new a')['href']
+        date_value = row.select_one('.author .thread-date').get_text(strip=True)
+        views_count = row.select_one('td:nth-child(4) .stats-count').get_text(strip=True)
+        replies_count = row.select_one('td:nth-child(3) .stats-count').get_text(strip=True)
 
-        author_tag = row.select_one(".author a")
-        author_name = author_tag.get_text(strip=True) if author_tag else None
-        author_url = author_tag["href"] if author_tag else None
-
-        date_tag = row.select_one(".thread-date")
-        date_value = date_tag.get_text(strip=True) if date_tag else None
-
-        views_count_tag = row.select_one('.stats-desc:-soup-contains("Views")')
-        views_count_str = (
-            row.select_one(".stats-count.theme_text").get_text(strip=True)
-            if views_count_tag
-            else None
-        )
-        views_count = (
-            float(re.sub(r"[^\d.]", "", views_count_str)) if views_count_str else None
-        )
-
-        replies_count_tag = row.select_one('.stats-desc:-soup-contains("Replies")')
-        replies_count_str = (
-            row.select_one(".stats-count.theme_text").get_text(strip=True)
-            if replies_count_tag
-            else None
-        )
-        replies_count = (
-            float(re.sub(r"[^\d.]", "", replies_count_str))
-            if replies_count_str
-            else None
-        )
-
-        data.append(
-            {
-                "post_name": title,
-                "post_author": author_name,
-                "post_author_url": author_url,
-                "post_link": post_url,
-                "post_date": date_value,
-                "views": int(views_count) if views_count is not None else None,
-                "replies": int(replies_count) if replies_count is not None else None,
-            }
-        )
+        row_data = {
+            "post_name": post_name,
+            "post_author": author_name,
+            "post_author_url": author_url,
+            "post_link": post_url,
+            "post_date": date_value,
+            "views": float(views_count) if views_count else None,
+            "replies": float(replies_count) if replies_count else None,
+        }
+        data.append(row_data)
     return data
 
 def save_data_to_csv(data, filename):
-    file_exists = Path(filename).exists()
-    with open(filename, 'a', newline='', encoding='utf-8') as file:
-        fieldnames = ['post_name', 'post_author', 'post_author_url', 'post_link', 'post_date', 'views', 'replies']
-        writer = csv.DictWriter(file, fieldnames=fieldnames)
+    # Create the CSV file if it doesn't exist and write the header
+    file_path = Path(filename)
+    file_exists = file_path.is_file()
+
+    with file_path.open(mode='a', newline='', encoding='utf-8') as csvfile:
+        fieldnames = ["post_name", "post_author", "post_author_url", "post_link", "post_date", "views", "replies"]
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+        # Write header only if the file is new
         if not file_exists:
             writer.writeheader()
-        writer.writerows(data)
+        
+        # Write each row of data
+        for row in data:
+            writer.writerow(row)
 
 with sync_playwright() as p:
-    browser = p.firefox.launch(headless=False, slow_mo=1000)
+    browser = p.firefox.launch(headless=True, slow_mo=1000)
     context = browser.new_context(
         user_agent=f"{user_agent}",
         color_scheme="dark",
