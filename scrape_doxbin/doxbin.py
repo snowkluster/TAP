@@ -31,11 +31,12 @@ import csv
 # ]
 # user_agent = choice(user_agent_strings)
 
+# this does about 5 % i guess 
 def extract_table_data(table):
     rows = []
     for row in table.find("tbody").find_all("tr"):
         cells = [cell.get_text(strip=True) for cell in row.find_all("td")]
-        # Extract hyperlinks and their text if available
+        # Extract hyperlinks and their text if available 50 /50 give or take IDK man
         links = [a.get("href") for a in row.find_all("a")]
         row_data = cells + links
         rows.append(row_data)
@@ -48,6 +49,7 @@ def extract_table_data(table):
 #             for row in rows:
 #                 file.write(", ".join(row) + "\n")
 
+# this doesn't crash 
 def save_table_data(tables, filename):
     with open(filename, 'a', newline='', encoding='utf-8') as file:
         writer = csv.writer(file)
@@ -59,7 +61,7 @@ with sync_playwright() as p:
     browser = p.firefox.launch(headless=True, slow_mo=1000)
     context = browser.new_context(
         # user_agent=f"{user_agent}",
-        color_scheme='dark',  # Emulate dark mode, fucking doesn't work.
+        color_scheme='dark',  # Emulate dark mode, doesn't work on firefox
         viewport={ 'width': 1920, 'height': 968 },
     )
     context.add_init_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
