@@ -1,0 +1,27 @@
+graph TD
+    A[Main Site] -->|Requests feeds| B[Threat Intel Feed Processor]
+    A -->|Requests data| C[Web Scrapers]
+    A -->|Requests ranking| D[Search API]
+    A -->|Displays information| User[(User)]
+    
+    B -->|Provides feeds| E[Abuse.ch Threat Fox]
+    B -->|Provides feeds| F[Alien Vault OTX]
+    
+    C -->|Triggers scraping| G[ClearNet]
+    C -->|Triggers scraping| H[TorSock]
+    
+    H -->|Accesses| I[Dark Web]
+    
+    C -->|Transfers data| J[DataSet]
+    
+    J -->|Stores data| K[ODM]
+    K -->|Stores processed data| L[Database]
+    
+    L -->|Provides relations| M[User Relational Mapping]
+    
+    D -->|Requests ranking| M
+    D -->|Provides ranking| A
+    M -->|Provides relations| A
+
+
+mermaid component diagram

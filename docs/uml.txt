@@ -1,0 +1,73 @@
+https://mermaid.live/
+
+claude.ai 
+
+classDiagram
+    class User {
+        +Requests()
+        +DisplaysInformation()
+    }
+    class MainSite {
+        +RequestsFeeds()
+        +ProcessedFeeds()
+        +TriggersScraping()
+        +RequestsData()
+        +ProvidesScrapedData()
+        +StoresData()
+        +RequestsRelations()
+        +ProvidesRanking()
+        +ProvidesRelations()
+    }
+    class ThreatIntelFeedProcessor {
+        +RequestsFeeds()
+        +ProvidesFeeds()
+    }
+    class AbusechThreatFox
+    class AlienVaultOTX
+    class WebScrapers {
+        +DataTransfer()
+        +TransfersData()
+    }
+    class TorSock {
+        +Accesses()
+        +ProvidesData()
+    }
+    class DarkWeb
+    class ClearNet
+    class SearchAPI {
+        +RequestsRanking()
+    }
+    class DataSet {
+        +SendsData()
+    }
+    class ODM {
+        +StoresProcessedData()
+    }
+    class Database {
+        +ProvidesRelations()
+    }
+    class UserMapping
+
+    User --> MainSite : Requests
+    MainSite --> User : DisplaysInformation
+    MainSite --> ThreatIntelFeedProcessor : RequestsFeeds
+    ThreatIntelFeedProcessor --> MainSite : ProcessedFeeds
+    ThreatIntelFeedProcessor --> AbusechThreatFox : RequestsFeeds
+    AbusechThreatFox --> ThreatIntelFeedProcessor : ProvidesFeeds
+    ThreatIntelFeedProcessor --> AlienVaultOTX : RequestsFeeds
+    AlienVaultOTX --> ThreatIntelFeedProcessor : ProvidesFeeds
+    MainSite --> WebScrapers : TriggersScraping
+    WebScrapers --> MainSite : ProvidesScrapedData
+    WebScrapers --> TorSock : DataTransfer
+    TorSock --> WebScrapers : TransfersData
+    TorSock --> DarkWeb : Accesses
+    DarkWeb --> TorSock : ProvidesData
+    MainSite --> ClearNet : RequestsData
+    ClearNet --> WebScrapers : TriggersScraping
+    MainSite --> SearchAPI : RequestsRanking
+    MainSite --> DataSet : StoresData
+    DataSet --> ODM : SendsData
+    ODM --> Database : StoresProcessedData
+    MainSite --> UserMapping : RequestsRelations
+    Database --> UserMapping : ProvidesRelations
+    UserMapping --> MainSite : ProvidesRanking

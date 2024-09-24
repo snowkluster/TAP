@@ -1,0 +1,53 @@
+use plantuml
+
+@startuml
+participant User
+participant "Main Site"
+participant "Threat Intel Feed Processor"
+participant "Abuse.ch Threat Fox"
+participant "Alien Vault OTX"
+participant DB
+participant WebScrapers
+participant DataSet
+participant ODM
+participant SearchAPI
+participant UserMapping
+participant ClearNet
+participant TorSock
+participant DarkWeb
+
+User -> "Main Site" : Access Site
+
+"Main Site" -> "Threat Intel Feed Processor" : Request Threat Feeds
+"Threat Intel Feed Processor" -> "Abuse.ch Threat Fox" : Request Threat Feeds
+"Abuse.ch Threat Fox" -> "Threat Intel Feed Processor" : New Feeds
+"Threat Intel Feed Processor" -> "Alien Vault OTX" : Request Threat Feeds
+"Alien Vault OTX" -> "Threat Intel Feed Processor" : New Feeds
+"Threat Intel Feed Processor" -> "Main Site" : Processed Threat Feeds
+
+"Main Site" -> DB : Request Old Posts
+DB -> "Main Site" : Old Posts from Database
+
+"Main Site" -> WebScrapers : Trigger Data Scraping
+WebScrapers -> DataSet : Storing scraped data in dataset
+DataSet -> ODM : Clean and map tables
+ODM -> DB : Storing non-searchable site data
+
+"Main Site" -> SearchAPI : Find User Ranking
+SearchAPI -> UserMapping : Find User Ranking
+UserMapping -> "Main Site" : User Ranking Results
+
+"Main Site" -> DB : Find User Relations
+DB -> UserMapping : Find User Relations (DoxBin)
+UserMapping -> "Main Site" : User Relations Results
+
+"Main Site" -> ClearNet : Access Data
+ClearNet -> WebScrapers : Start Scraping
+WebScrapers <-> TorSock : Data Transfer
+TorSock -> DarkWeb : Access Dark Web Data
+DarkWeb -> TorSock : Dark Web Data
+TorSock -> WebScrapers : Transferred Data
+WebScrapers -> "Main Site" : Scraped Data
+
+"Main Site" -> User : Display Aggregated Information
+@enduml

@@ -1,0 +1,45 @@
+graph TD
+    User((User))
+    MS[Main Site]
+    TIFP[Threat Intel Feed Processor]
+    ATF[Abuse.ch Threat Fox]
+    AVO[Alien Vault OTX]
+    DB[(Database)]
+    WS[Web Scrapers]
+    DS[DataSet]
+    ODM[ODM]
+    SA[Search API]
+    UM[User Mapping]
+    CN[ClearNet]
+    TS[TorSock]
+    DW[Dark Web]
+
+    User -->|Requests| MS
+    MS -->|Requests feeds| TIFP
+    TIFP -->|Requests feeds| ATF
+    TIFP -->|Requests feeds| AVO
+    ATF -->|Provides feeds| TIFP
+    AVO -->|Provides feeds| TIFP
+    TIFP -->|Processed feeds| MS
+    MS -->|Requests/Stores data| DB
+    MS -->|Triggers scraping| WS
+    WS -->|Stores data| DS
+    DS -->|Sends data| ODM
+    ODM -->|Stores processed data| DB
+    MS -->|Requests ranking| SA
+    SA -->|Requests ranking| UM
+    UM -->|Provides ranking| MS
+    MS -->|Requests relations| DB
+    DB -->|Provides relations| UM
+    UM -->|Provides relations| MS
+    MS -->|Requests data| CN
+    CN -->|Triggers scraping| WS
+    WS <-->|Data transfer| TS
+    TS -->|Accesses| DW
+    DW -->|Provides data| TS
+    TS -->|Transfers data| WS
+    WS -->|Provides scraped data| MS
+    MS -->|Displays information| User
+
+
+excalidraw mermaid

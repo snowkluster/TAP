@@ -1,0 +1,71 @@
+Table posts_dox {
+  id int [pk, increment] // Primary Key
+  title varchar [not null] // Post title
+  replies int [default: 0] // Number of replies
+  views int [default: 0] // Number of views
+  user_name varchar [not null] // Name of the user who posted
+  date_posted date [not null] // Date when the post was made
+  post_url varchar [not null] // URL to the post
+  user_url varchar [not null] // URL to the user's profile
+  user_id int // Foreign Key to users table
+}
+
+Table users {
+  user_id int [pk] // Unique identifier for each user
+  user_name varchar [not null] // User's name
+  joined varchar [not null] // Joined date description
+  pastes int [default: 0] // Number of pastes
+  comments int [default: 0] // Number of comments
+  following int [default: 0] // Number of users they are following
+  followers int [default: 0] // Number of followers
+  likes_given int [default: 0] // Number of likes given
+  likes_received int [default: 0] // Number of likes received
+}
+
+Table comments {
+  comment_id int [pk, increment] // Unique identifier for each comment
+  user_id int [not null] // Foreign Key to users table
+  username varchar [not null] // Username of the commenter
+  username_url varchar [not null] // URL to the commenter's profile
+  content varchar [not null] // Content of the comment
+  date datetime [not null] // Date and time when the comment was made
+}
+
+// Relationships
+Ref: comments.user_id > users.user_id
+
+Ref: posts_dox.user_id > users.user_id
+
+Table users_for {
+  id integer [primary key]
+  uid integer [unique, not null]
+  username varchar
+  reputation integer
+  likes integer
+  threads integer
+  posts float
+  vouches integer
+  credits float
+  status varchar
+  registration_date date
+  last_visit datetime
+  username_changes integer
+  likes_given integer
+  referrals integer
+  reported_posts integer
+  online_time varchar
+}
+
+Table posts {
+  id integer [primary key]
+  post_name varchar
+  post_author_id integer [ref: > users_for.id] // Foreign key referencing users table
+  post_author_url varchar
+  post_link varchar [unique]
+  post_date datetime
+  views integer
+  replies integer
+}
+
+
+use dbdiagram.io
