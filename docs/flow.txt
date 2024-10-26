@@ -51,3 +51,5 @@ WebScrapers -> "Main Site" : Scraped Data
 
 "Main Site" -> User : Display Aggregated Information
 @enduml
+
+Maybe add docker engine stuff here ??
