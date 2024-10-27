@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 
 from playwright.sync_api import sync_playwright
-import json
-from pathlib import Path
 from time import sleep
 
 with sync_playwright() as p:
