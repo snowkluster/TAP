@@ -7,7 +7,7 @@ write an scraper API for https://www.nulled.to/index.php?app=core&module=search
 from fastapi import FastAPI, Query
 from pydantic import BaseModel
 from playwright.sync_api import sync_playwright
-from bs4 import BeautifulSoup as bs
+from bs4 import BeautifulSoup as Bs4
 import json
 from pathlib import Path
 
@@ -22,7 +22,7 @@ class SearchResult(BaseModel):
 
 def extract_table_data(page_content):
     response_list = []
-    soup = bs(page_content, "html.parser")
+    soup = Bs4(page_content, "html.parser")
     table = soup.find("table", {"id": "forum_table"})
     if table:
         rows = table.find_all("tr")

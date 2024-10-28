@@ -48,10 +48,11 @@ def parse_forum_data(html_content):
     return extracted_data
 
 
-def save_to_csv(scrape_data, filename='nulled_source.csv'):
+def save_to_csv(scrape_data, filename='nulled_combo.csv'):
     with open(filename, 'a', newline='', encoding='utf-8') as csvfile:
         fieldnames = ['post_name', 'post_author', 'post_author_url', 'post_link', 'post_date', 'views', 'replies']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
         if csvfile.tell() == 0:
             writer.writeheader()
 
@@ -71,7 +72,7 @@ with sync_playwright() as playwright:
     context.add_cookies(json.loads(Path("cookies.json").read_text()))
 
     page = context.new_page()
-    page.goto("https://www.nulled.to/forum/24-source-codes/")
+    page.goto("https://www.nulled.to/forum/74-combolists/")
 
     while True:
         page.wait_for_selector('tr.__topic')
