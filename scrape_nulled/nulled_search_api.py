@@ -1,9 +1,5 @@
 #!/usr/bin/env python3
 
-"""
-TODO
-write an scraper API for https://www.nulled.to/index.php?app=core&module=search
-"""
 from fastapi import FastAPI, Query
 from pydantic import BaseModel
 from playwright.sync_api import sync_playwright

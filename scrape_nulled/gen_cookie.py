@@ -5,7 +5,6 @@ import time
 from pathlib import Path
 import json
 
-# TODO: complete this damn function
 with sync_playwright() as p:
     browser = p.firefox.launch(headless=False, slow_mo=10000)
     context = browser.new_context()

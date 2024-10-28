@@ -31,6 +31,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/scrape_nulled/nulled_combo.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/scrape_nulled/nulled_prods.csv">
           <value>
             <Attribute>
