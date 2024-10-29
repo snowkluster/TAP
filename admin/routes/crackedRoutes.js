@@ -47,7 +47,6 @@ const handleScriptExecution = (scriptName, scriptPath, processVariable, res, run
     }
 };
 
-// Endpoint for acc_cracked.py
 router.post('/acc', (req, res) => {
     const { running } = req.body;
     const result = handleScriptExecution('acc_cracked.py', path.join(__dirname, '../../scrape_cracked/acc_cracked.py'), accCrackedProcess, res, running);
