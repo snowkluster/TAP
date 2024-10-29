@@ -10,3 +10,4 @@ venv
 paper
 rem.md
 node_modules
+.idea
