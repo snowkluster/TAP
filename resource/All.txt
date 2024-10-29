@@ -1,0 +1,39 @@
+A survey on technical threat intelligence in the age of sophisticated cyber attacks
+
+Weaponization of the Growing Cybercrimes inside the Dark Net: The Question of Detection and Application
+
+Evolution of Dark Web Threat Analysis and Detection: A Systematic Approach
+
+Ranking Radically Influential Web Forum Users
+
+Then and Now: On the Maturity of the Cybercrime Markets
+
+Analyzing and Identifying Data Breaches in Underground Forums
+
+Exploring Dark Web Crawlers: A Systematic Literature Review of Dark Web Crawlers and Their Implementation
+
+How to Find Hidden Users: A Survey of Attacks on Anonymity Networks
+
+Open Source Intelligence for Malicious Behavior Discovery and Interpretation
+
+The Anonymity of the Dark Web: A Survey
+
+Analysis of Security Mechanisms of Dark Web Markets
+
+Becoming JUDAS: Correlating Users and Devices During a Digital Investigation
+
+Exploring the Topological Properties of the Tor Dark Web
+
+Nationality and Geolocation-Based Profiling in the Dark(Web)
+
+Sharing Is Caring: Hurdles and Prospects of Open, Crowd-Sourced Cyber Threat Intelligence
+
+The Not Yet Exploited Goldmine of OSINT: Opportunities, Open Challenges and Future Trends
+
+Uncovering the Dark Web: A Case Study of Jihad on the Web
+
+Dark Web
+
+A Focused Crawler for Dark Web Forums
+
+Dark Web Forums Portal: Searching and Analyzing Jihadist Forums 

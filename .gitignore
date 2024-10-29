@@ -6,6 +6,7 @@ venv
 *.csv
 *.json
 *.zip
+*.pdf
 paper
 rem.md
 node_modules
