@@ -62,7 +62,6 @@ router.post('/combo', (req, res) => {
     res.json({ message: result.message });
 });
 
-// Endpoint for cracked_hire.py
 router.post('/hire', (req, res) => {
     const { running } = req.body;
     const result = handleScriptExecution('cracked_hire.py', path.join(__dirname, '../../scrape_cracked/cracked_hire.py'), crackedHireProcess, res, running);
@@ -70,7 +69,6 @@ router.post('/hire', (req, res) => {
     res.json({ message: result.message });
 });
 
-// Endpoint for cracked.py
 router.post('/source', (req, res) => {
     const { running } = req.body;
     const result = handleScriptExecution('cracked.py', path.join(__dirname, '../../scrape_cracked/cracked.py'), crackedProcess, res, running);
