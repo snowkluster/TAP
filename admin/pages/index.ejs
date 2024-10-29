@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<body class="container mt-5">
+    <h1>Ingestion Engine Control Panel</h1>
+
+    <!-- Switch for acc_cracked.py -->
+    <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckAccCracked">
+        <label class="form-check-label" for="flexSwitchCheckAccCracked">Run acc_cracked.py</label>
+    </div>
+
+    <!-- Switch for cracked_combo.py -->
+    <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCrackedCombo">
+        <label class="form-check-label" for="flexSwitchCheckCrackedCombo">Run cracked_combo.py</label>
+    </div>
+
+    <!-- Switch for cracked_hire.py -->
+    <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCrackedHire">
+        <label class="form-check-label" for="flexSwitchCheckCrackedHire">Run cracked_hire.py</label>
+    </div>
+
+    <!-- Switch for cracked.py -->
+    <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCrackedSource">
+        <label class="form-check-label" for="flexSwitchCheckCrackedSource">Run cracked.py</label>
+    </div>
+
+    <!-- Switch for products_cracked.py -->
+    <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckProductsCracked">
+        <label class="form-check-label" for="flexSwitchCheckProductsCracked">Run products_cracked.py</label>
+    </div>
+
+    <!-- Switch for service_cracked.py -->
+    <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckServiceCracked">
+        <label class="form-check-label" for="flexSwitchCheckServiceCracked">Run service_cracked.py</label>
+    </div>
+
+    <!-- Switch for profile_cracked.py -->
+    <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckProfileCracked">
+        <label class="form-check-label" for="flexSwitchCheckProfileCracked">Run profile_cracked.py</label>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const switches = [
+                { id: 'flexSwitchCheckAccCracked', endpoint: '/cracked/acc' },
+                { id: 'flexSwitchCheckCrackedCombo', endpoint: '/cracked/combo' },
+                { id: 'flexSwitchCheckCrackedHire', endpoint: '/cracked/hire' },
+                { id: 'flexSwitchCheckCrackedSource', endpoint: '/cracked/source' },
+                { id: 'flexSwitchCheckProductsCracked', endpoint: '/cracked/products' },
+                { id: 'flexSwitchCheckServiceCracked', endpoint: '/cracked/service' },
+                { id: 'flexSwitchCheckProfileCracked', endpoint: '/cracked/profiles' },
+            ];
+
+            switches.forEach(({ id, endpoint }) => {
+                const toggleSwitch = document.getElementById(id);
+
+                toggleSwitch.addEventListener('change', async () => {
+                    const isChecked = toggleSwitch.checked;
+
+                    try {
+                        const response = await fetch(endpoint, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({ running: isChecked }),
+                        });
+
+                        const data = await response.json();
+
+                        if (!response.ok) {
+                            throw new Error(data.message);
+                        }
+
+                        alert(data.message);
+                    } catch (error) {
+                        alert('Error: ' + error.message);
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

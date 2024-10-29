@@ -8,3 +8,4 @@ venv
 *.zip
 paper
 rem.md
+node_modules

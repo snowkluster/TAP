@@ -1,20 +1,12 @@
 #!/usr/bin/env python3
 
 from fastapi import FastAPI, Query
-from pydantic import BaseModel
 from bs4 import BeautifulSoup as bs
 import json
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 app = FastAPI()
-
-class PostData(BaseModel):
-    post_title: str
-    post_link: str
-    replies: str
-    views: str
-    date_posted: str
 
 def extract_data_from_page(html_content):
     response_data = []
@@ -33,7 +25,6 @@ def extract_data_from_page(html_content):
         third_div = order_all[2]
         replies, views = third_div.text.strip().split()[1:4:2]
         date_posted = order_all[5].find('span', class_='text-muted').get_text()
-        print()
         post_data = {
             "post_title": post_title,
             "author_url": author_url,
