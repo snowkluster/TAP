@@ -67,8 +67,8 @@ with sync_playwright() as p:
     context.add_init_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
     context.add_cookies(json.loads(Path("cookies.json").read_text()))
     page = context.new_page()
-    page.goto("https://doxbin.org/")
-    
+    page.goto("https://doxbin.org/",timeout=60000)
+    sleep(10)
     page_number = 1
     while True:
         print(f"Extracting data from page {page_number}...")

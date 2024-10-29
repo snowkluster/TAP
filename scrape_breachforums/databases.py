@@ -77,7 +77,7 @@ def save_to_csv(data, filename):
 def main():
     csv_file = 'databases_extracted_data.csv'
     with sync_playwright() as p:
-        browser = p.firefox.launch(headless=False, slow_mo=10000)
+        browser = p.firefox.launch(headless=True, slow_mo=10000)
         context = browser.new_context(
             color_scheme='dark',
             viewport={'width': 1920, 'height': 968},

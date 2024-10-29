@@ -12,46 +12,54 @@
 <body class="container mt-5">
     <h1>Ingestion Engine Control Panel</h1>
 
-    <!-- Switch for acc_cracked.py -->
+    <h2 class="mt-4">Cracked Scripts</h2>
     <div class="form-check form-switch">
         <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckAccCracked">
         <label class="form-check-label" for="flexSwitchCheckAccCracked">Run acc_cracked.py</label>
     </div>
-
-    <!-- Switch for cracked_combo.py -->
     <div class="form-check form-switch">
         <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCrackedCombo">
         <label class="form-check-label" for="flexSwitchCheckCrackedCombo">Run cracked_combo.py</label>
     </div>
-
-    <!-- Switch for cracked_hire.py -->
     <div class="form-check form-switch">
         <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCrackedHire">
         <label class="form-check-label" for="flexSwitchCheckCrackedHire">Run cracked_hire.py</label>
     </div>
-
-    <!-- Switch for cracked.py -->
     <div class="form-check form-switch">
         <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCrackedSource">
         <label class="form-check-label" for="flexSwitchCheckCrackedSource">Run cracked.py</label>
     </div>
-
-    <!-- Switch for products_cracked.py -->
     <div class="form-check form-switch">
         <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckProductsCracked">
         <label class="form-check-label" for="flexSwitchCheckProductsCracked">Run products_cracked.py</label>
     </div>
-
-    <!-- Switch for service_cracked.py -->
     <div class="form-check form-switch">
         <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckServiceCracked">
         <label class="form-check-label" for="flexSwitchCheckServiceCracked">Run service_cracked.py</label>
     </div>
 
-    <!-- Switch for profile_cracked.py -->
+    <h2 class="mt-4">Breach Forum Scripts</h2>
     <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckProfileCracked">
-        <label class="form-check-label" for="flexSwitchCheckProfileCracked">Run profile_cracked.py</label>
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckBreachAcc">
+        <label class="form-check-label" for="flexSwitchCheckBreachAcc">Run cracked_acc.py</label>
+    </div>
+    <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDatabases">
+        <label class="form-check-label" for="flexSwitchCheckDatabases">Run databases.py</label>
+    </div>
+    <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckOtherLeaks">
+        <label class="form-check-label" for="flexSwitchCheckOtherLeaks">Run other_leaks.py</label>
+    </div>
+    <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckStealer">
+        <label class="form-check-label" for="flexSwitchCheckStealer">Run stealer.py</label>
+    </div>
+
+    <h2 class="mt-4">Doxbin Script</h2>
+    <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDoxbin">
+        <label class="form-check-label" for="flexSwitchCheckDoxbin">Run doxbin.py</label>
     </div>
 
     <script>
@@ -63,7 +71,11 @@
                 { id: 'flexSwitchCheckCrackedSource', endpoint: '/cracked/source' },
                 { id: 'flexSwitchCheckProductsCracked', endpoint: '/cracked/products' },
                 { id: 'flexSwitchCheckServiceCracked', endpoint: '/cracked/service' },
-                { id: 'flexSwitchCheckProfileCracked', endpoint: '/cracked/profiles' },
+                { id: 'flexSwitchCheckBreachAcc', endpoint: '/breached/acc' },
+                { id: 'flexSwitchCheckDatabases', endpoint: '/breached/databases' },
+                { id: 'flexSwitchCheckOtherLeaks', endpoint: '/breached/other_leaks' },
+                { id: 'flexSwitchCheckStealer', endpoint: '/breached/stealer' },
+                { id: 'flexSwitchCheckDoxbin', endpoint: '/doxbin/doxbin' },
             ];
 
             switches.forEach(({ id, endpoint }) => {
