@@ -49,7 +49,7 @@ const handleScriptExecution = (scriptName, scriptPath, processVariable, res, run
 // Endpoint for cracked_acc.py
 router.post('/cracked-acc', (req, res) => {
     const { running } = req.body;
-    const result = handleScriptExecution('cracked_acc.py', path.join(__dirname, '../../scrape_breachforums/cracked_acc.py'), crackedAccProcess, res, running);
+    const result = handleScriptExecution('cracked_acc.py', path.join(__dirname, '../../functions/scrape_breachforums/cracked_acc.py'), crackedAccProcess, res, running);
     crackedAccProcess = result.process;
     res.json({ message: result.message });
 });
@@ -57,7 +57,7 @@ router.post('/cracked-acc', (req, res) => {
 // Endpoint for databases.py
 router.post('/databases', (req, res) => {
     const { running } = req.body;
-    const result = handleScriptExecution('databases.py', path.join(__dirname, '../../scrape_breachforums/databases.py'), databasesProcess, res, running);
+    const result = handleScriptExecution('databases.py', path.join(__dirname, '../../functions/scrape_breachforums/databases.py'), databasesProcess, res, running);
     databasesProcess = result.process;
     res.json({ message: result.message });
 });
@@ -65,7 +65,7 @@ router.post('/databases', (req, res) => {
 // Endpoint for other_leaks.py
 router.post('/other-leaks', (req, res) => {
     const { running } = req.body;
-    const result = handleScriptExecution('other_leaks.py', path.join(__dirname, '../../scrape_breachforums/other_leaks.py'), otherLeaksProcess, res, running);
+    const result = handleScriptExecution('other_leaks.py', path.join(__dirname, '../../functions/scrape_breachforums/other_leaks.py'), otherLeaksProcess, res, running);
     otherLeaksProcess = result.process;
     res.json({ message: result.message });
 });
@@ -73,7 +73,7 @@ router.post('/other-leaks', (req, res) => {
 // Endpoint for stealer.py
 router.post('/stealer', (req, res) => {
     const { running } = req.body;
-    const result = handleScriptExecution('stealer.py', path.join(__dirname, '../../scrape_breachforums/stealer.py'), stealerProcess, res, running);
+    const result = handleScriptExecution('stealer.py', path.join(__dirname, '../../functions/scrape_breachforums/stealer.py'), stealerProcess, res, running);
     stealerProcess = result.process;
     res.json({ message: result.message });
 });
