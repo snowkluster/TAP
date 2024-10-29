@@ -54,7 +54,7 @@ router.post('/acc', (req, res) => {
     res.json({ message: result.message });
 });
 
-// Endpoint for cracked_combo.py
+
 router.post('/combo', (req, res) => {
     const { running } = req.body;
     const result = handleScriptExecution('cracked_combo.py', path.join(__dirname, '../../scrape_cracked/cracked_combo.py'), crackedComboProcess, res, running);
