@@ -15,5 +15,5 @@ with sync_playwright() as p:
     page.click('input.input_submit')
     time.sleep(5)
     cookies = context.cookies()
-    Path("cookies.json").write_text(json.dumps(cookies))
+    Path("../../json/nulled_cookies.json").write_text(json.dumps(cookies))
     browser.close()

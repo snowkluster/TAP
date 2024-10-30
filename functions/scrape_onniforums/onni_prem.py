@@ -62,7 +62,7 @@ with sync_playwright() as playwright:
     context.add_init_script(
         "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
     )
-    context.add_cookies(json.loads(Path("onni_cookies.json").read_text()))
+    context.add_cookies(json.loads(Path("../../json/onni_cookies.json").read_text()))
     page = context.new_page()
     page.goto("https://onniforums.com/forum-16.html")
 

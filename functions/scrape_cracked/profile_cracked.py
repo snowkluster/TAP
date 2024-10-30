@@ -119,7 +119,7 @@ def main():
         context.add_init_script(
             "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
         )
-        context.add_cookies(json.loads(Path("cracked_cookies.json").read_text()))
+        context.add_cookies(json.loads(Path("../../json/cracked_cookies.json").read_text()))
         page = context.new_page()
         stealth_sync(page)
         # https://cracked.io/AIX

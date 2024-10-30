@@ -17,7 +17,7 @@ import csv
 #     page.fill('input#password','Zxqz33FmFbijeA')
 #     page.click('input[value="Login"]')
 #     cookies = context.cookies()
-#     Path("cookies.json").write_text(json.dumps(cookies))
+#     Path("nulled_cookies.json").write_text(json.dumps(cookies))
 
 # Working on user agent part, IDK man this shit keeps breaking...
 
@@ -65,7 +65,7 @@ with sync_playwright() as p:
         viewport={ 'width': 1920, 'height': 968 },
     )
     context.add_init_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
-    context.add_cookies(json.loads(Path("cookies.json").read_text()))
+    context.add_cookies(json.loads(Path("../../json/cookies.json").read_text()))
     page = context.new_page()
     page.goto("https://doxbin.org/",timeout=60000)
     sleep(10)

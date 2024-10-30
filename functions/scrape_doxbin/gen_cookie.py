@@ -15,4 +15,4 @@ with sync_playwright() as p:
     page.fill('input#password','Zxqz33FmFbijeA')
     page.click('input[value="Login"]')
     cookies = context.cookies()
-    Path("cookies.json").write_text(json.dumps(cookies))
+    Path("../../json/cookies.json").write_text(json.dumps(cookies))

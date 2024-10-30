@@ -59,7 +59,7 @@ def search_breach_forums(search_term: str = Query(..., min_length=1)):
             color_scheme='dark',
             viewport={'width': 1920, 'height': 968},
         )
-        context.add_cookies(json.loads(Path("breach_cookies.json").read_text()))
+        context.add_cookies(json.loads(Path("../json/breach_cookies.json").read_text()))
         context.add_init_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
         page = context.new_page()
         page.goto("https://breachforums.st/search")

@@ -3,105 +3,49 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
-        <entry key="/scrape_breachforums/stealer_extracted_data.csv">
+        <entry key="/functions/scrape_breachforums/extracted_data.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="/scrape_cracked/cracked_combo.csv">
+        <entry key="/functions/scrape_cracked/cracked_accounts.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="/scrape_cracked/cracked_products.csv">
+        <entry key="/functions/scrape_cracked/cracked_hire.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="/scrape_cracked/cracked_services.csv">
+        <entry key="/functions/scrape_cracked/cracked_products.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="/scrape_doxbin/table_data.csv">
+        <entry key="/functions/scrape_cracked/cracked_source.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="/scrape_nulled/forum_data.csv">
+        <entry key="/functions/scrape_nulled/nulled_acc.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="/scrape_nulled/nulled_acc.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/scrape_nulled/nulled_combo.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/scrape_nulled/nulled_prods.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/scrape_nulled/nulled_source.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/scrape_onniforums/onni_dbs.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/scrape_onniforums/onni_hack.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/scrape_onniforums/onni_opsec.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/scrape_onniforums/onni_others.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/scrape_onniforums/onni_prem.csv">
+        <entry key="/functions/scrape_nulled/nulled_prods.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />

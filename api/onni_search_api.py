@@ -43,7 +43,7 @@ def get_forum_posts(search_term: str = Query(...)):
     with sync_playwright() as p:
         browser = p.firefox.launch(headless=True, slow_mo=1000)
         context = browser.new_context()
-        context.add_cookies(json.loads(Path("onni_cookies.json").read_text()))
+        context.add_cookies(json.loads(Path("../json/onni_cookies.json").read_text()))
         page = context.new_page()
         page.goto("https://onniforums.com/")
         page.fill('input.form-control.border.border', search_term)

@@ -68,7 +68,7 @@ with sync_playwright() as playwright:
     context.add_init_script(
         "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
     )
-    context.add_cookies(json.loads(Path("cookies.json").read_text()))
+    context.add_cookies(json.loads(Path("../../json/nulled_cookies.json").read_text()))
 
     page = context.new_page()
     page.goto("https://www.nulled.to/forum/43-accounts")

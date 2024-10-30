@@ -39,7 +39,7 @@ with sync_playwright() as p:
         color_scheme='dark',
         viewport={ 'width': 1920, 'height': 968 },
     )
-    context.add_cookies(json.loads(Path("cookies.json").read_text()))
+    context.add_cookies(json.loads(Path("../../json/cookies.json").read_text()))
     context.add_init_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
     page = context.new_page()
     page.goto('https://doxbin.org/')

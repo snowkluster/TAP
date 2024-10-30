@@ -14,5 +14,5 @@ with sync_playwright() as p:
     page.fill('input[name=password]','#UWqUhhXiArt6ubsn4xuc&@L')
     page.click('input[type="submit"].button[value="Login"]')
     cookies = context.cookies()
-    Path("breach_cookies.json").write_text(json.dumps(cookies))
+    Path("../../json/breach_cookies.json").write_text(json.dumps(cookies))
     browser.close()

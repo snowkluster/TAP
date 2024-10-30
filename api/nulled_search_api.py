@@ -57,7 +57,7 @@ def search_nulled_forums(search_term: str = Query(...)):
     with sync_playwright() as p:
         browser = p.firefox.launch(headless=True,slow_mo=10000)
         context = browser.new_context()
-        context.add_cookies(json.loads(Path("cookies.json").read_text()))
+        context.add_cookies(json.loads(Path("../json/nulled_cookies.json").read_text()))
         page = context.new_page()
         page.goto("https://www.nulled.to/index.php?app=core&module=search")
         page.locator("[name='search_term']").fill(search_term)

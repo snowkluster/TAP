@@ -25,5 +25,5 @@ with sync_playwright() as p:
         second_login_button.click()
     time.sleep(5)
     cookies = context.cookies()
-    Path("onni_cookies.json").write_text(json.dumps(cookies))
+    Path("../../json/onni_cookies.json").write_text(json.dumps(cookies))
     browser.close()
