@@ -48,7 +48,7 @@ def parse_forum_data(html_content):
     return extracted_data
 
 
-def save_to_csv(scrape_data, filename='nulled_prods.csv'):
+def save_to_csv(scrape_data, filename):
     with open(filename, 'a', newline='', encoding='utf-8') as csvfile:
         fieldnames = ['post_name', 'post_author', 'post_author_url', 'post_link', 'post_date', 'views', 'replies']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
@@ -60,7 +60,7 @@ def save_to_csv(scrape_data, filename='nulled_prods.csv'):
 
 
 with sync_playwright() as playwright:
-    browser = playwright.chromium.launch(headless=True, slow_mo=1000)
+    browser = playwright.firefox.launch(headless=False, slow_mo=1000)
     context = browser.new_context(
         color_scheme="dark",
         viewport={"width": 1920, "height": 968},
@@ -72,12 +72,12 @@ with sync_playwright() as playwright:
 
     page = context.new_page()
     page.goto("https://www.nulled.to/forum/129-products/")
-
+    csv_filename='../../database/nulled_prods.csv'
     while True:
         page.wait_for_selector('tr.__topic')
         content = page.content()
         data = parse_forum_data(content)
-        save_to_csv(data)
+        save_to_csv(data, csv_filename)
         next_button = page.query_selector('a[rel="next"]')
         if next_button and not next_button.is_disabled():
             next_button.click()

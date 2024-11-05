@@ -67,7 +67,7 @@ def save_to_csv(data, filename):
 
 
 def main():
-    csv_file = 'extracted_data.csv'
+    csv_file = '../../database/breach_acc.csv'
     with sync_playwright() as p:
         browser = p.firefox.launch(headless=True, slow_mo=10000)
         context = browser.new_context(

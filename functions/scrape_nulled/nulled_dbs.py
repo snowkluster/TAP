@@ -6,7 +6,6 @@ from pathlib import Path
 from bs4 import BeautifulSoup as bs
 from playwright.sync_api import sync_playwright
 
-
 def parse_forum_data(html_content):
     soup = bs(html_content, 'html.parser')
     rows = soup.find_all('tr', class_='__topic')
@@ -48,7 +47,7 @@ def parse_forum_data(html_content):
     return extracted_data
 
 
-def save_to_csv(scrape_data, filename='forum_data.csv'):
+def save_to_csv(scrape_data, filename):
     with open(filename, 'a', newline='', encoding='utf-8') as csvfile:
         fieldnames = ['post_name', 'post_author', 'post_author_url', 'post_link', 'post_date', 'views', 'replies']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
@@ -73,12 +72,12 @@ with sync_playwright() as playwright:
 
     page = context.new_page()
     page.goto("https://www.nulled.to/forum/184-dumps-databases/")
-
+    csv_filename='../../database/nulled_dbs.csv'
     while True:
         page.wait_for_selector('tr.__topic')
         content = page.content()
         data = parse_forum_data(content)
-        save_to_csv(data)
+        save_to_csv(data, csv_filename)
         next_button = page.query_selector('a[rel="next"]')
         if next_button and not next_button.is_disabled():
             next_button.click()

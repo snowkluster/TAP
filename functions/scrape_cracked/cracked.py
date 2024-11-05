@@ -147,7 +147,7 @@ with sync_playwright() as p:
     page = context.new_page()
     stealth_sync(page)
     page.goto("https://cracked.io/Forum-Source-codes")
-    csv_filename = 'cracked_source.csv'
+    csv_filename = '../../database/cracked_source.csv'
     while True:
         page.wait_for_timeout(3000)
         html_content = page.content()

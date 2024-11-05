@@ -77,7 +77,7 @@ with sync_playwright() as p:
         tables = soup.find_all("table")
         print(f"On page {page_number}")
         print("Writing data to file...")
-        save_table_data(tables, 'table_data.csv')
+        save_table_data(tables, '../../database/doxbin_table.csv')
         # Check if the "next" button is disabled
         next_button = page.query_selector('a[style*="border-top-right-radius"]')
         

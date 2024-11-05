@@ -43,7 +43,7 @@ def extract_data_from_page(html_content):
         response_data.append(post_data)
     return response_data
 
-def save_to_csv(scrape_data, filename='onni_hack.csv'):
+def save_to_csv(scrape_data, filename):
     with open(filename, 'a', newline='', encoding='utf-8') as csvfile:
         fieldnames = ['post_name', 'post_author', 'post_author_url', 'post_link', 'post_date', 'views', 'replies']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
@@ -65,12 +65,12 @@ with sync_playwright() as playwright:
     context.add_cookies(json.loads(Path("../../json/onni_cookies.json").read_text()))
     page = context.new_page()
     page.goto("https://onniforums.com/forum-19.html")
-
+    csv_filename = '../../database/onni_hack.csv'
     while True:
         page.wait_for_load_state("networkidle")
         html_content = page.content()
         data = extract_data_from_page(html_content)
-        save_to_csv(data)
+        save_to_csv(data, csv_filename)
         next_page_link = page.query_selector("a.pagination_next")
         if next_page_link:
             next_page_link.click()

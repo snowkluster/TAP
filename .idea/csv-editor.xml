@@ -3,35 +3,7 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
-        <entry key="/functions/scrape_breachforums/extracted_data.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/functions/scrape_cracked/cracked_accounts.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/functions/scrape_cracked/cracked_hire.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/functions/scrape_cracked/cracked_products.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/functions/scrape_cracked/cracked_source.csv">
+        <entry key="/functions/scrape_nulled/forum_data.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
@@ -45,7 +17,21 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/functions/scrape_nulled/nulled_combo.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/functions/scrape_nulled/nulled_prods.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/functions/scrape_nulled/nulled_source.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
