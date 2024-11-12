@@ -8,12 +8,13 @@ if [ "$1" = "stop" ]; then
     echo "${Red}Stopping Nginx Proxy${NC}"
     sudo docker compose down --rmi local
     echo "${Red}Stopping Dashboard${NC}"
-    kill $(lsof -t -i:3000)
+    kill "$(lsof -t -i:3000)"
     exit 0
 fi
 
-cd admin
+cd admin || exit
 
+echo "${Green}Starting containers${NC}"
 sudo docker compose up -d
 
 npm start &
