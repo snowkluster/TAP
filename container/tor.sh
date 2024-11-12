@@ -16,14 +16,14 @@ if [ "$1" = "stop" ]; then
     exit 0
 fi
 
-if [ "$(sudo docker images -q ${IMAGE_NAME})" != "" ]; then
-  echo "Building the Docker image..."
+if [ "$(sudo docker images -q ${IMAGE_NAME})" = "" ]; then
+  echo "${Green}Building the Docker image...${NC}"
   sudo docker build -t $IMAGE_NAME .
 else
-  echo "Image already exists"
+  echo "${Green}Image already exists${NC}"
 fi
 
-echo "Starting the Tor Proxy"
+echo "${Green}Starting the Tor Proxy${NC}"
 sudo docker run -d --name $CONTAINER_NAME -p $TOR_PORT:$TOR_PORT $IMAGE_NAME
 
 echo "${Green}Tor service is now running in the container on port $TOR_PORT. ${NC}"
