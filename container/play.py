@@ -2,6 +2,8 @@
 
 import asyncio
 import csv
+from typing import Optional
+
 from playwright.async_api import async_playwright
 from bs4 import BeautifulSoup
 
@@ -48,7 +50,7 @@ async def main():
             await page.close()
         await browser.close()
 
-    with open("scraped_data.csv", "w", newline='', encoding='utf-8') as csvfile:
+    with open("../database/play_posts.csv", "w", newline='', encoding='utf-8') as csvfile: # type: Optional["SupportsWrite[str]"]
         fieldnames = ["Title", "Location", "Link", "Views", "Added", "Publication Date"]
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()

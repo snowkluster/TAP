@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from playwright.sync_api import sync_playwright
-from bs4 import BeautifulSoup as bs
+from bs4 import BeautifulSoup
 from random import randint
 import json
 from pathlib import Path
@@ -9,8 +9,8 @@ from time import sleep
 
 SEARCH_TERM='thor'
 
-def extract_table(tables):
-    table = tables[0]
+def extract_table(all_tables):
+    table = all_tables[0]
     data = []
     headers = [header.text.strip() for header in table.find_all('th')]
     rows = table.find_all('tr')[1:]  # Skip header row
@@ -47,7 +47,7 @@ with sync_playwright() as p:
     page.fill('input[name="search-query"]',SEARCH_TERM)
     page.click('input[value="Search"]')
     html_content = page.content()
-    soup = bs(html_content, "html.parser")
+    soup = BeautifulSoup(html_content, "html.parser")
     tables = soup.find_all("table")
     table_data = extract_table(tables)
     json_data = json.dumps(table_data, indent=4)

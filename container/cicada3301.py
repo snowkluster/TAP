@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+from typing import Optional
 from playwright.sync_api import sync_playwright
 import csv
 from bs4 import BeautifulSoup
@@ -49,10 +50,10 @@ with sync_playwright() as p:
         })
 
     # Define CSV file path
-    csv_file_path = 'cicada3301_posts.csv'
+    csv_file_path = '../database/cicada3301_posts.csv'
 
     # Write data to a CSV file
-    with open(csv_file_path, mode='w', newline='', encoding='utf-8') as file:
+    with open(csv_file_path, mode='w', newline='', encoding='utf-8') as file: # type: Optional["SupportsWrite[str]"]
         # Create a CSV DictWriter object
         writer = csv.DictWriter(file, fieldnames=['Title', 'Web URL', 'Size Data', 'Publication Date', 'Description'])
 

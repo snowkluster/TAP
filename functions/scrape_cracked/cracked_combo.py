@@ -3,9 +3,11 @@
 import csv
 import json
 from pathlib import Path
+from typing import Optional
+
 from playwright.sync_api import sync_playwright
 from playwright_stealth import stealth_sync
-from bs4 import BeautifulSoup as bs
+from bs4 import BeautifulSoup
 import random
 
 
@@ -68,8 +70,8 @@ USER_AGENT = [
 
 user_agent = random.choice(USER_AGENT)
 
-def extract_table_data(html_content):
-    soup = bs(html_content, "html.parser")
+def extract_table_data(content):
+    soup = BeautifulSoup(content, "html.parser")
     table = soup.find('table', class_='tborder clear')
     if not table:
         raise ValueError("Table with class 'tborder clear' not found")
@@ -103,7 +105,7 @@ def save_data_to_csv(data, filename):
     file_path = Path(filename)
     file_exists = file_path.is_file()
 
-    with file_path.open(mode='a', newline='', encoding='utf-8') as csvfile:
+    with file_path.open(mode='a', newline='', encoding='utf-8') as csvfile: # type: Optional["SupportsWrite[str]"]
         fieldnames = ["post_name", "post_author", "post_author_url", "post_link", "post_date", "views", "replies"]
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 

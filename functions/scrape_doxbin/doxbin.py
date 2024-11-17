@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from playwright.sync_api import sync_playwright
-from bs4 import BeautifulSoup as bs
+from bs4 import BeautifulSoup
 from time import sleep
 import json
 from pathlib import Path
@@ -50,10 +50,10 @@ def extract_table_data(table):
 #                 file.write(", ".join(row) + "\n")
 
 # this doesn't crash 
-def save_table_data(tables, filename):
+def save_table_data(all_tables, filename):
     with open(filename, 'a', newline='', encoding='utf-8') as file:
         writer = csv.writer(file)
-        for table in tables:
+        for table in all_tables:
             rows = extract_table_data(table)
             writer.writerows(rows)
 
@@ -73,7 +73,7 @@ with sync_playwright() as p:
     while True:
         print(f"Extracting data from page {page_number}...")
         html_content = page.content()
-        soup = bs(html_content, "html.parser")
+        soup = BeautifulSoup(html_content, "html.parser")
         tables = soup.find_all("table")
         print(f"On page {page_number}")
         print("Writing data to file...")

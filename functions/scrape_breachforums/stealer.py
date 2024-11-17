@@ -3,6 +3,8 @@
 import json
 import csv
 from pathlib import Path
+from typing import Optional
+
 from playwright.sync_api import sync_playwright
 from bs4 import BeautifulSoup as bs4
 
@@ -67,7 +69,7 @@ def extract_table_data(page_content):
 
 def save_to_csv(data, filename):
     file_exists = Path(filename).exists()
-    with open(filename, mode='a', newline='', encoding='utf-8') as file:
+    with open(filename, mode='a', newline='', encoding='utf-8') as file: # type: Optional["SupportsWrite[str]"]
         writer = csv.DictWriter(file, fieldnames=['post_name', 'post_author', 'post_author_url', 'post_link', 'post_date', 'views', 'replies'])
         if not file_exists:
             writer.writeheader()  

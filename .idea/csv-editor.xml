@@ -3,28 +3,49 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
-        <entry key="/container/bianlian_companies.csv">
+        <entry key="/database/bianlian_posts.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="/container/cicada3301_posts.csv">
+        <entry key="/database/breach_acc.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="/container/darkvault_posts.csv">
+        <entry key="/database/breach_dbs.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="/container/scraped_data.csv">
+        <entry key="/database/breach_leaks.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/database/breach_stealer.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/database/cracked_accounts.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/database/cracked_combo.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
@@ -59,6 +80,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/database/nulled_acc.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/database/nulled_dbs.csv">
           <value>
             <Attribute>
@@ -80,6 +108,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/database/onni_dbs.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/database/onni_hack.csv">
           <value>
             <Attribute>
@@ -95,6 +130,20 @@
           </value>
         </entry>
         <entry key="/database/onni_others.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/database/onni_prem.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/database/play_posts.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />

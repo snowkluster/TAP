@@ -1,4 +1,6 @@
 import asyncio
+from typing import Optional
+
 from playwright.async_api import async_playwright
 from bs4 import BeautifulSoup
 import csv
@@ -39,7 +41,7 @@ async def main():
                 'countdown_time': countdown_time
             })
 
-        with open("scraped_data_ransomhub.csv", "w", newline='', encoding='utf-8') as f:
+        with open("../database/ransomhub_posts.csv", "w", newline='', encoding='utf-8') as f: # type: Optional["SupportsWrite[str]"]
             writer = csv.DictWriter(f, fieldnames=scraped_data[0].keys())
             writer.writeheader()
             writer.writerows(scraped_data)

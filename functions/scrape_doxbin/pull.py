@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # pull data about a user profile
 from playwright.sync_api import sync_playwright
-from bs4 import BeautifulSoup as bs
+from bs4 import BeautifulSoup
 import json
 
 # USER_URL="/user/DECAYEDDOXING"
@@ -13,7 +13,7 @@ def extract_user_info():
         page = browser.new_page()
         page.goto(f"https://doxbin.org{USER_URL}")
         html_content = page.content()
-        soup = bs(html_content, "html.parser")
+        soup = BeautifulSoup(html_content, "html.parser")
 
         user_info = {}
         rows = soup.find_all('div', class_='uinfo-row')

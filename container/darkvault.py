@@ -17,7 +17,7 @@ with sync_playwright() as p:
     post_blocks = soup.find_all('div', class_='post-block')
 
     # Prepare the CSV file for saving the data
-    csv_file = 'darkvault_posts.csv'
+    csv_file = '../database/darkvault_posts.csv'
 
     # Open the CSV file in append mode ('a') to add data
     with open(csv_file, mode='a', newline='', encoding='utf-8') as file:

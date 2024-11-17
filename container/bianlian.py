@@ -4,12 +4,13 @@ from time import sleep
 import csv
 from bs4 import BeautifulSoup
 from playwright.sync_api import sync_playwright
+from typing import Optional
 
-csv_file = 'bianlian_companies.csv'
+csv_file = '../database/bianlian_posts.csv'
 fieldnames = ['Company Name', 'Date', 'Post URL']  # Added 'Post URL' column
 
 # Open CSV file for writing
-with open(csv_file, mode='w', newline='', encoding='utf-8') as file:
+with open(csv_file, mode='w', newline='', encoding='utf-8') as file:  # type: Optional["SupportsWrite[str]"]
     writer = csv.DictWriter(file, fieldnames=fieldnames)
     writer.writeheader()
 
