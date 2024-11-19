@@ -1,8 +1,6 @@
-import os
+import glob
 import sqlite3
 import pandas as pd
-import glob
-
 
 def print_csv_info(file_path):
     """Print diagnostic information about the CSV file"""

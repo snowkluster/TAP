@@ -38,6 +38,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/database/cicada3301_posts.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/database/cracked_accounts.csv">
           <value>
             <Attribute>
@@ -144,6 +151,13 @@
           </value>
         </entry>
         <entry key="/database/play_posts.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/database/ransomhub_posts.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
