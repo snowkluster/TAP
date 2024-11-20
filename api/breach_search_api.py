@@ -2,7 +2,7 @@
 
 from fastapi import FastAPI, Query
 from playwright.sync_api import sync_playwright
-from bs4 import BeautifulSoup as bs
+from bs4 import BeautifulSoup
 import json
 from pathlib import Path
 
@@ -10,7 +10,7 @@ app = FastAPI()
 
 def extract_table_data(page_content):
     search_results = []
-    soup = bs(page_content, 'html.parser')
+    soup = BeautifulSoup(page_content, 'html.parser')
 
     table = soup.find('table', class_='tborder')
     if table:

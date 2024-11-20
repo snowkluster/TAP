@@ -87,6 +87,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/database/darkvault_posts.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/database/nulled_acc.csv">
           <value>
             <Attribute>
