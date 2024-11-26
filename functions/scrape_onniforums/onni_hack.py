@@ -3,12 +3,14 @@
 import csv
 import json
 from pathlib import Path
-from bs4 import BeautifulSoup as bs
+from typing import Optional
+
+from bs4 import BeautifulSoup
 from playwright.sync_api import sync_playwright
 
-def extract_data_from_page(html_content):
+def extract_data_from_page(content):
     response_data = []
-    soup = bs(html_content, 'html.parser')
+    soup = BeautifulSoup(content, 'html.parser')
     parent_div = soup.find('div', class_='card shadow-sm p-2 p-sm-2 p-md-2 p-lg-5 p-xl-5 p-xxl-5 border-0 mt-3')
     thread_divs = parent_div.find_all('div', class_='d-none d-sm-none d-md-none d-lg-block d-xl-block d-xxl-block')[1:]
     for div in thread_divs:
@@ -44,7 +46,7 @@ def extract_data_from_page(html_content):
     return response_data
 
 def save_to_csv(scrape_data, filename):
-    with open(filename, 'a', newline='', encoding='utf-8') as csvfile:
+    with open(filename, 'a', newline='', encoding='utf-8') as csvfile: # type: Optional["SupportsWrite[str]"]
         fieldnames = ['post_name', 'post_author', 'post_author_url', 'post_link', 'post_date', 'views', 'replies']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         if csvfile.tell() == 0:

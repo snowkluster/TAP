@@ -16,7 +16,6 @@ const __dirname = path.dirname(__filename);
 
 app.use(express.json());
 app.use(cors());
-app.use(express.static('public'));
 
 app.use((req, res, next) => {
     if (req.headers.host !== 'dashboard.localhost') {
@@ -36,7 +35,7 @@ app.use('/cracked', crackedRoutes);
 app.use('/breached', breachedRoutes);
 app.use('/doxbin', doxbinRoutes);
 app.use('/nulled', nulledRoutes);
-app.use('/onni', onniRoutes); // Add onniRoutes
+app.use('/onni', onniRoutes);
 
 app.listen(PORT,'127.0.0.1', () => {
     console.log(`Server is running on http://localhost:${PORT}`);

@@ -7,165 +7,329 @@
     <title>Control Panel</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #121212;
+            color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+
+        h1, h2 {
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+            color: #ffffff;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        .container {
+            padding-top: 50px;
+        }
+
+        .card {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-check-label {
+            font-size: 16px;
+            color: #f8f9fa;
+        }
+
+        .form-switch .form-check-input {
+            background-color: #2575fc;
+            border-color: #2575fc;
+        }
+
+        .form-switch .form-check-input:checked {
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+
+        .form-check-label {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .form-check-input:focus {
+            border-color: #0056b3;
+            box-shadow: none;
+        }
+
+        .form-check-input {
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .row {
+            margin-top: 30px;
+        }
+
+        .col-md-6 {
+            margin-bottom: 20px;
+        }
+
+        .form-check {
+            margin-bottom: 15px;
+        }
+
+        .form-check-label {
+            font-size: 18px;
+        }
+
+        .form-check-input:checked + .form-check-label {
+            font-weight: bold;
+        }
+
+        .btn {
+            background-color: #2575fc;
+            color: white;
+            border-radius: 25px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #3b8ce8;
+        }
+
+        .form-check-input {
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .form-check-input:checked {
+            background-color: #f7a600;
+            border-color: #f7a600;
+        }
+
+        .form-check-input:checked + .form-check-label {
+            font-weight: bold;
+        }
+
+        .card-header {
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        .toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1050;
+}
+
+.toast {
+    border-radius: 8px;
+    padding: 10px 20px;
+    color: #ffffff;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: opacity 0.5s ease-in-out;
+    margin-bottom: 10px;
+}
+
+.toast-success {
+    background-color: #28a745;
+}
+
+.toast-error {
+    background-color: #dc3545;
+}
+
+.toast-body {
+    font-size: 14px;
+}
+    </style>
 </head>
 
-<body class="container mt-5">
+<body class="container">
     <h1>Ingestion Engine Control Panel</h1>
 
     <div class="row">
         <div class="col-md-6">
-            <h2 class="mt-4">Cracked Scripts</h2>
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckAccCracked">
-                <label class="form-check-label" for="flexSwitchCheckAccCracked">Run acc_cracked.py</label>
-            </div>
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCrackedCombo">
-                <label class="form-check-label" for="flexSwitchCheckCrackedCombo">Run cracked_combo.py</label>
-            </div>
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCrackedHire">
-                <label class="form-check-label" for="flexSwitchCheckCrackedHire">Run cracked_hire.py</label>
-            </div>
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCrackedSource">
-                <label class="form-check-label" for="flexSwitchCheckCrackedSource">Run cracked.py</label>
-            </div>
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckProductsCracked">
-                <label class="form-check-label" for="flexSwitchCheckProductsCracked">Run products_cracked.py</label>
-            </div>
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckServiceCracked">
-                <label class="form-check-label" for="flexSwitchCheckServiceCracked">Run service_cracked.py</label>
-            </div>
+            <div class="card">
+                <h2 class="mt-4">Cracked Scripts</h2>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckAccCracked">
+                    <label class="form-check-label" for="flexSwitchCheckAccCracked">Run acc_cracked.py</label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCrackedCombo">
+                    <label class="form-check-label" for="flexSwitchCheckCrackedCombo">Run cracked_combo.py</label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCrackedHire">
+                    <label class="form-check-label" for="flexSwitchCheckCrackedHire">Run cracked_hire.py</label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCrackedSource">
+                    <label class="form-check-label" for="flexSwitchCheckCrackedSource">Run cracked.py</label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckProductsCracked">
+                    <label class="form-check-label" for="flexSwitchCheckProductsCracked">Run products_cracked.py</label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckServiceCracked">
+                    <label class="form-check-label" for="flexSwitchCheckServiceCracked">Run service_cracked.py</label>
+                </div>
 
-            <h2 class="mt-4">Breach Forum Scripts</h2>
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckBreachAcc">
-                <label class="form-check-label" for="flexSwitchCheckBreachAcc">Run cracked_acc.py</label>
-            </div>
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDatabases">
-                <label class="form-check-label" for="flexSwitchCheckDatabases">Run databases.py</label>
-            </div>
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckOtherLeaks">
-                <label class="form-check-label" for="flexSwitchCheckOtherLeaks">Run other_leaks.py</label>
-            </div>
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckStealer">
-                <label class="form-check-label" for="flexSwitchCheckStealer">Run stealer.py</label>
-            </div>
+                <h2 class="mt-4">Breach Forum Scripts</h2>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckBreachAcc">
+                    <label class="form-check-label" for="flexSwitchCheckBreachAcc">Run cracked_acc.py</label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDatabases">
+                    <label class="form-check-label" for="flexSwitchCheckDatabases">Run databases.py</label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckOtherLeaks">
+                    <label class="form-check-label" for="flexSwitchCheckOtherLeaks">Run other_leaks.py</label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckStealer">
+                    <label class="form-check-label" for="flexSwitchCheckStealer">Run stealer.py</label>
+                </div>
 
-            <h2 class="mt-4">Doxbin Script</h2>
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDoxbin">
-                <label class="form-check-label" for="flexSwitchCheckDoxbin">Run doxbin.py</label>
+                <h2 class="mt-4">Doxbin Script</h2>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDoxbin">
+                    <label class="form-check-label" for="flexSwitchCheckDoxbin">Run doxbin.py</label>
+                </div>
             </div>
         </div>
 
         <div class="col-md-6">
-            <h2 class="mt-4">Nulled Scripts</h2>
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckNulledAcc">
-                <label class="form-check-label" for="flexSwitchCheckNulledAcc">Run nulled_acc.py</label>
-            </div>
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckNulledCombo">
-                <label class="form-check-label" for="flexSwitchCheckNulledCombo">Run nulled_combo.py</label>
-            </div>
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckNulledDbs">
-                <label class="form-check-label" for="flexSwitchCheckNulledDbs">Run nulled_dbs.py</label>
-            </div>
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckNulledProds">
-                <label class="form-check-label" for="flexSwitchCheckNulledProds">Run nulled_prods.py</label>
-            </div>
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckNulledSource">
-                <label class="form-check-label" for="flexSwitchCheckNulledSource">Run nulled_source.py</label>
-            </div>
+            <div class="card">
+                <h2 class="mt-4">Nulled Scripts</h2>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckNulledAcc">
+                    <label class="form-check-label" for="flexSwitchCheckNulledAcc">Run nulled_acc.py</label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckNulledCombo">
+                    <label class="form-check-label" for="flexSwitchCheckNulledCombo">Run nulled_combo.py</label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckNulledDbs">
+                    <label class="form-check-label" for="flexSwitchCheckNulledDbs">Run nulled_dbs.py</label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckNulledProds">
+                    <label class="form-check-label" for="flexSwitchCheckNulledProds">Run nulled_prods.py</label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckNulledSource">
+                    <label class="form-check-label" for="flexSwitchCheckNulledSource">Run nulled_source.py</label>
+                </div>
 
-            <h2 class="mt-4">Onni Forums Scripts</h2>
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckOnniDbs">
-                <label class="form-check-label" for="flexSwitchCheckOnniDbs">Run onni_dbs.py</label>
-            </div>
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckOnniHack">
-                <label class="form-check-label" for="flexSwitchCheckOnniHack">Run onni_hack.py</label>
-            </div>
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckOnniOpsec">
-                <label class="form-check-label" for="flexSwitchCheckOnniOpsec">Run onni_opsec.py</label>
-            </div>
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckOnniOther">
-                <label class="form-check-label" for="flexSwitchCheckOnniOther">Run onni_other.py</label>
-            </div>
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckOnniPrem">
-                <label class="form-check-label" for="flexSwitchCheckOnniPrem">Run onni_prem.py</label>
+                <h2 class="mt-4">Onni Scripts</h2>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckOnniDbs">
+                    <label class="form-check-label" for="flexSwitchCheckOnniDbs">Run onni_dbs.py</label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckOnniHack">
+                    <label class="form-check-label" for="flexSwitchCheckOnniHack">Run onni_hack.py</label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckOnniOpsec">
+                    <label class="form-check-label" for="flexSwitchCheckOnniOpsec">Run onni_opsec.py</label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckOnniOther">
+                    <label class="form-check-label" for="flexSwitchCheckOnniOther">Run onni_other.py</label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckOnniPrem">
+                    <label class="form-check-label" for="flexSwitchCheckOnniPrem">Run onni_prem.py</label>
+                </div>
             </div>
         </div>
     </div>
 
+    <!-- Toast notification container -->
+    <div class="toast-container">
+        <div id="toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-body">
+                <span id="toast-message"></span>
+            </div>
+        </div>
+    </div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const switches = [
-                { id: 'flexSwitchCheckAccCracked', endpoint: '/cracked/acc' },
-                { id: 'flexSwitchCheckCrackedCombo', endpoint: '/cracked/combo' },
-                { id: 'flexSwitchCheckCrackedHire', endpoint: '/cracked/hire' },
-                { id: 'flexSwitchCheckCrackedSource', endpoint: '/cracked/source' },
-                { id: 'flexSwitchCheckProductsCracked', endpoint: '/cracked/products' },
-                { id: 'flexSwitchCheckServiceCracked', endpoint: '/cracked/service' },
-                { id: 'flexSwitchCheckBreachAcc', endpoint: '/breached/acc' },
-                { id: 'flexSwitchCheckDatabases', endpoint: '/breached/databases' },
-                { id: 'flexSwitchCheckOtherLeaks', endpoint: '/breached/other-leaks' },
-                { id: 'flexSwitchCheckStealer', endpoint: '/breached/stealer' },
-                { id: 'flexSwitchCheckDoxbin', endpoint: '/doxbin/doxbin' },
-                { id: 'flexSwitchCheckNulledAcc', endpoint: '/nulled/acc' },
-                { id: 'flexSwitchCheckNulledCombo', endpoint: '/nulled/combo' },
-                { id: 'flexSwitchCheckNulledDbs', endpoint: '/nulled/dbs' },
-                { id: 'flexSwitchCheckNulledProds', endpoint: '/nulled/prods' },
-                { id: 'flexSwitchCheckNulledSource', endpoint: '/nulled/source' },
-                { id: 'flexSwitchCheckOnniDbs', endpoint: '/onni/dbs' }, // New endpoint for Onni
-                { id: 'flexSwitchCheckOnniHack', endpoint: '/onni/hack' }, // New endpoint for Onni
-                { id: 'flexSwitchCheckOnniOpsec', endpoint: '/onni/opsec' }, // New endpoint for Onni
-                { id: 'flexSwitchCheckOnniOther', endpoint: '/onni/other' }, // New endpoint for Onni
-                { id: 'flexSwitchCheckOnniPrem', endpoint: '/onni/prem' }, // New endpoint for Onni
-            ];
+    const toastElement = document.getElementById('toast');
+    const toastMessageElement = document.getElementById('toast-message');
+    const toast = new bootstrap.Toast(toastElement);
 
-            switches.forEach(({ id, endpoint }) => {
-                const toggleSwitch = document.getElementById(id);
+    const switches = [
+        { id: 'flexSwitchCheckAccCracked', endpoint: '/cracked/acc' },
+        { id: 'flexSwitchCheckCrackedCombo', endpoint: '/cracked/combo' },
+        { id: 'flexSwitchCheckCrackedHire', endpoint: '/cracked/hire' },
+        { id: 'flexSwitchCheckCrackedSource', endpoint: '/cracked/source' },
+        { id: 'flexSwitchCheckProductsCracked', endpoint: '/cracked/products' },
+        { id: 'flexSwitchCheckServiceCracked', endpoint: '/cracked/service' },
+        { id: 'flexSwitchCheckBreachAcc', endpoint: '/breached/acc' },
+        { id: 'flexSwitchCheckDatabases', endpoint: '/breached/databases' },
+        { id: 'flexSwitchCheckOtherLeaks', endpoint: '/breached/other-leaks' },
+        { id: 'flexSwitchCheckStealer', endpoint: '/breached/stealer' },
+        { id: 'flexSwitchCheckDoxbin', endpoint: '/doxbin/doxbin' },
+        { id: 'flexSwitchCheckNulledAcc', endpoint: '/nulled/acc' },
+        { id: 'flexSwitchCheckNulledCombo', endpoint: '/nulled/combo' },
+        { id: 'flexSwitchCheckNulledDbs', endpoint: '/nulled/dbs' },
+        { id: 'flexSwitchCheckNulledProds', endpoint: '/nulled/prods' },
+        { id: 'flexSwitchCheckNulledSource', endpoint: '/nulled/source' },
+        { id: 'flexSwitchCheckOnniDbs', endpoint: '/onni/dbs' },
+        { id: 'flexSwitchCheckOnniHack', endpoint: '/onni/hack' },
+        { id: 'flexSwitchCheckOnniOpsec', endpoint: '/onni/opsec' },
+        { id: 'flexSwitchCheckOnniOther', endpoint: '/onni/other' },
+        { id: 'flexSwitchCheckOnniPrem', endpoint: '/onni/prem' },
+    ];
 
-                toggleSwitch.addEventListener('change', async () => {
-                    const isChecked = toggleSwitch.checked;
+    switches.forEach(({ id, endpoint }) => {
+        const toggleSwitch = document.getElementById(id);
 
-                    try {
-                        const response = await fetch(endpoint, {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                            body: JSON.stringify({ running: isChecked }),
-                        });
+        toggleSwitch.addEventListener('change', async () => {
+            const isChecked = toggleSwitch.checked;
 
-                        const data = await response.json();
-
-                        if (!response.ok) {
-                            throw new Error(data.message);
-                        }
-
-                        alert(data.message);
-                    } catch (error) {
-                        alert('Error: ' + error.message);
-                    }
+            try {
+                const response = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ running: isChecked }),
                 });
-            });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.message);
+                }
+
+                toastMessageElement.textContent = data.message || "Action completed successfully!";
+                toastElement.classList.remove('toast-error');
+                toastElement.classList.add('toast-success');
+                toast.show();
+                setTimeout(() => {
+                    toast.hide();
+                }, 4000);
+            } catch (error) {
+                toastMessageElement.textContent = 'Error: ' + error.message;
+                toastElement.classList.remove('toast-success');
+                toastElement.classList.add('toast-error');
+                toast.show();
+                setTimeout(() => {
+                    toast.hide();
+                }, 4000);
+            }
         });
+    });
+});
+
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
