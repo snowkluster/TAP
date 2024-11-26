@@ -17,12 +17,12 @@ const __dirname = path.dirname(__filename);
 app.use(express.json());
 app.use(cors());
 
-app.use((req, res, next) => {
-    if (req.headers.host !== 'dashboard.localhost') {
-      return res.status(403).send('Forbidden');
-    }
-    next();
-});
+// app.use((req, res, next) => {
+//     if (req.headers.host !== 'dashboard.localhost') {
+//       return res.status(403).send('Forbidden');
+//     }
+//     next();
+// });
 
 app.set('views', path.join(__dirname, 'pages'));
 app.set('view engine', 'ejs');
