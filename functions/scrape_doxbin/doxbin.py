@@ -58,7 +58,7 @@ def save_table_data(all_tables, filename):
             writer.writerows(rows)
 
 with sync_playwright() as p:
-    browser = p.firefox.launch(headless=True, slow_mo=1000)
+    browser = p.firefox.launch(headless=False, slow_mo=1000)
     context = browser.new_context(
         # user_agent=f"{user_agent}",
         color_scheme='dark',  # Emulate dark mode, doesn't work on firefox
@@ -67,8 +67,7 @@ with sync_playwright() as p:
     context.add_init_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
     context.add_cookies(json.loads(Path("../../json/cookies.json").read_text()))
     page = context.new_page()
-    page.goto("https://doxbin.org/",timeout=60000)
-    sleep(10)
+    page.goto("https://doxbin.net/")
     page_number = 1
     while True:
         print(f"Extracting data from page {page_number}...")

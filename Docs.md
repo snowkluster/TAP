@@ -1,1 +1,4 @@
 - Remember that since there is a volume in the docker container it has to be 
+- doxbin blocked by NPTEL network but alt domain work, 
+- doxbin.org, doxbin.com -- killa
+- doxbin.net works --> scrapers a fucking working

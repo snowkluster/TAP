@@ -56,7 +56,7 @@ def save_to_csv(scrape_data, filename):
             writer.writerow(entry)
 
 with sync_playwright() as playwright:
-    browser = playwright.firefox.launch(headless=True, slow_mo=1000)
+    browser = playwright.firefox.launch(headless=False, slow_mo=12000)
     context = browser.new_context(
         color_scheme="dark",
         viewport={"width": 1920, "height": 968},

@@ -11,7 +11,7 @@ def extract_user_info():
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True, slow_mo=1000)
         page = browser.new_page()
-        page.goto(f"https://doxbin.org{USER_URL}")
+        page.goto(f"https://doxbin.net{USER_URL}")
         html_content = page.content()
         soup = BeautifulSoup(html_content, "html.parser")
 

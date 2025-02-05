@@ -41,7 +41,7 @@ def extract_data_from_page(html_content):
 @app.get("/search/")
 def get_forum_posts(search_term: str = Query(...)):
     with sync_playwright() as p:
-        browser = p.firefox.launch(headless=True, slow_mo=1000)
+        browser = p.firefox.launch(headless=False, slow_mo=12000)
         context = browser.new_context()
         context.add_cookies(json.loads(Path("../json/onni_cookies.json").read_text()))
         page = context.new_page()

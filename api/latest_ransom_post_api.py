@@ -48,3 +48,7 @@ def scrape_page():
         html_content = page.content()
         browser.close()
     return scrape_data(html_content)
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="127.0.0.1", port=8006)

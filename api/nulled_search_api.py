@@ -55,7 +55,7 @@ def extract_table_data(page_content):
 @app.get("/search/")
 def search_nulled_forums(search_term: str = Query(...)):
     with sync_playwright() as p:
-        browser = p.firefox.launch(headless=True,slow_mo=10000)
+        browser = p.firefox.launch(headless=True,slow_mo=1000)
         context = browser.new_context()
         context.add_cookies(json.loads(Path("../json/nulled_cookies.json").read_text()))
         page = context.new_page()

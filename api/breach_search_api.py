@@ -54,7 +54,7 @@ def extract_table_data(page_content):
 @app.get("/search/")
 def search_breach_forums(search_term: str = Query(..., min_length=1)):
     with sync_playwright() as p:
-        browser = p.firefox.launch(headless=False, slow_mo=10000)
+        browser = p.firefox.launch(headless=False, slow_mo=1000)
         context = browser.new_context(
             color_scheme='dark',
             viewport={'width': 1920, 'height': 968},

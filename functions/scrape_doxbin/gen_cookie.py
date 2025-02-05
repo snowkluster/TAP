@@ -9,7 +9,7 @@ with sync_playwright() as p:
     browser = p.firefox.launch(headless=False,slow_mo=10000)
     context = browser.new_context()
     page = context.new_page()
-    page.goto("https://doxbin.org/login")
+    page.goto("https://doxbin.net/login")
     sleep(15)
     page.fill('input#username','dump_master345')
     page.fill('input#password','Zxqz33FmFbijeA')

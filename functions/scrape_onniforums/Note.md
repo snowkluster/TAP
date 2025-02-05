@@ -1,0 +1,4 @@
+- Onniforums was originally run by dakto, it was later sold.
+- The forum has been taken down and none of these scrapers will work
+- Currently, we were able to extract information from all the important sections of the website
+- 

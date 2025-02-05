@@ -42,7 +42,7 @@ with sync_playwright() as p:
     context.add_cookies(json.loads(Path("../../json/cookies.json").read_text()))
     context.add_init_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
     page = context.new_page()
-    page.goto('https://doxbin.org/')
+    page.goto('https://doxbin.net/')
     sleep(randint(1,2))
     page.fill('input[name="search-query"]',SEARCH_TERM)
     page.click('input[value="Search"]')
