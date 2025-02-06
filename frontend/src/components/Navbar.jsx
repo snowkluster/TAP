@@ -3,85 +3,152 @@ import {
   Toolbar, 
   Typography, 
   Button, 
-  Box 
+  Box, 
+  IconButton, 
+  Drawer, 
+  List, 
+  ListItem, 
+  ListItemText 
 } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
+import MenuIcon from '@mui/icons-material/Menu';
+import { useState } from 'react';
 
 const Navbar = () => {
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const toggleDrawer = (open) => {
+    setDrawerOpen(open);
+  };
+
+  const menuItems = [
+    { text: 'Home', link: '/' },
+    { text: 'Darknet Feed', link: '/darknet-feed' },
+    { text: 'IP & Hash', link: '/ip-hash' },
+    { text: 'Live Search', link: '/live-search' },
+    { text: 'Admin Panel', link: 'http://localhost:3000', external: true }, // External link for Admin Panel
+    { text: 'Ransomware Post', link: '/ransomware-post' } // New route for Ransomware Post
+  ];
+
   return (
-    <AppBar position="static" sx={{ 
-      backgroundColor: '#1A1A1A', 
-      boxShadow: 'none',
-      borderBottom: '1px solid #333' 
-    }}>
-      <Toolbar>
-        <Typography 
-          variant="h6" 
-          component="div" 
-          sx={{ 
-            flexGrow: 1, 
-            color: '#FF9800',
-            fontWeight: 'bold'
-          }}
-        >
-          Threat Analysis Platform
-        </Typography>
-        <Box sx={{ display: 'flex', gap: 2 }}>
-          <Button 
-            color="inherit" 
-            component={RouterLink} 
-            to="/"
+    <>
+      <AppBar position="static" sx={{ 
+        backgroundColor: '#1A1A1A', 
+        boxShadow: 'none',
+        borderBottom: '1px solid #333' 
+      }}>
+        <Toolbar>
+          <Typography 
+            variant="h6" 
+            component="div" 
             sx={{ 
-              color: '#E0E0E0',
-              '&:hover': { 
-                backgroundColor: 'rgba(255,255,255,0.1)' 
-              }
+              flexGrow: 1, 
+              color: '#FF9800',
+              fontWeight: 'bold'
             }}
           >
-            Home
-          </Button>
-          <Button 
+            Threat Analysis Platform
+          </Typography>
+          <Box sx={{ display: 'flex', gap: 2 }}>
+            <Button 
+              color="inherit" 
+              component={RouterLink} 
+              to="/"
+              sx={{ 
+                color: '#E0E0E0',
+                '&:hover': { 
+                  backgroundColor: 'rgba(255,255,255,0.1)' 
+                }
+              }}
+            >
+              Home
+            </Button>
+            <Button 
+              color="inherit" 
+              component={RouterLink} 
+              to="/darknet-feed"
+              sx={{ 
+                color: '#E0E0E0',
+                '&:hover': { 
+                  backgroundColor: 'rgba(255,255,255,0.1)' 
+                }
+              }}
+            >
+              Darknet Feed
+            </Button>
+            <Button 
+              color="inherit" 
+              component={RouterLink} 
+              to="/ip-hash"
+              sx={{ 
+                color: '#E0E0E0',
+                '&:hover': { 
+                  backgroundColor: 'rgba(255,255,255,0.1)' 
+                }
+              }}
+            >
+              IP & Hash
+            </Button>
+            <Button 
+              color="inherit" 
+              component={RouterLink} 
+              to="/live-search"
+              sx={{ 
+                color: '#E0E0E0',
+                '&:hover': { 
+                  backgroundColor: 'rgba(255,255,255,0.1)' 
+                }
+              }}
+            >
+              Live Search
+            </Button>
+          </Box>
+          {/* Hamburger menu icon on the right */}
+          <IconButton 
+            edge="end" 
             color="inherit" 
-            component={RouterLink} 
-            to="/darknet-feed"
-            sx={{ 
-              color: '#E0E0E0',
-              '&:hover': { 
-                backgroundColor: 'rgba(255,255,255,0.1)' 
-              }
-            }}
+            aria-label="menu" 
+            onClick={() => toggleDrawer(true)}
+            sx={{ ml: 'auto' }} // Align icon to the right
           >
-            Darknet Feed
-          </Button>
-          <Button 
-            color="inherit" 
-            component={RouterLink} 
-            to="/ip-hash"
-            sx={{ 
-              color: '#E0E0E0',
-              '&:hover': { 
-                backgroundColor: 'rgba(255,255,255,0.1)' 
-              }
-            }}
-          >
-            IP & Hash
-          </Button>
-          <Button 
-            color="inherit" 
-            component={RouterLink} 
-            to="/live-search"
-            sx={{ 
-              color: '#E0E0E0',
-              '&:hover': { 
-                backgroundColor: 'rgba(255,255,255,0.1)' 
-              }
-            }}
-          >
-            Live Search
-          </Button>
-        </Box>
-      </Toolbar>
-    </AppBar>
+            <MenuIcon />
+          </IconButton>
+        </Toolbar>
+      </AppBar>
+
+      {/* Sidebar Drawer on the Right */}
+      <Drawer
+        anchor="right"  // Position it on the right side
+        open={drawerOpen}
+        onClose={() => toggleDrawer(false)}
+        sx={{
+          '& .MuiDrawer-paper': {
+            backgroundColor: '#1A1A1A',
+            color: '#E0E0E0'
+          }
+        }}
+      >
+        <List sx={{ width: 250 }}>
+          {menuItems.map((item, index) => (
+            <ListItem 
+              button 
+              key={index} 
+              component={item.external ? 'a' : RouterLink}
+              href={item.external ? item.link : undefined}
+              to={item.external ? undefined : item.link}
+              onClick={() => toggleDrawer(false)}
+              sx={{
+                '&:hover': { 
+                  backgroundColor: 'rgba(255,255,255,0.1)' 
+                }
+              }}
+            >
+              <ListItemText primary={item.text} sx={{ color: '#E0E0E0' }} />
+            </ListItem>
+          ))}
+        </List>
+      </Drawer>
+    </>
   );
 };
 

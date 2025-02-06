@@ -12,5 +12,7 @@ python3 IOC.py &
 pid5=$!
 python3 filehash-virus.py &
 pid6=$!
-trap 'kill $pid2 $pid3 pid4 pid5 pid6' INT
-wait $pid2 $pid3 $pid4 $pid5 $pid6
+python3 combine_search.py &
+pid7=$!
+trap 'kill $pid2 $pid3 pid4 pid5 pid6 pid7' INT
+wait $pid2 $pid3 $pid4 $pid5 $pid6 $pid7

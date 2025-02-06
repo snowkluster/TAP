@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Livesearch from './pages/Livesearch';
 import Darknetfeed from './pages/Darknetfeed';
 import IPnhash from './pages/IPnhash';
+import RansomwarePost from './pages/RansomwarePost';
 
 const Home = () => {
   return (
@@ -45,6 +46,7 @@ const App = () => {
           <Route path="/darknet-feed" element={<Darknetfeed />} />
           <Route path="/ip-hash" element={<IPnhash />} />
           <Route path="/live-search" element={<Livesearch />} />
+          <Route path="/ransomware-post" element={<RansomwarePost />} />
         </Routes>
       </Box>
     </Box>
