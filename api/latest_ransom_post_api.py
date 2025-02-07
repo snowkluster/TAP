@@ -1,12 +1,25 @@
 #!/usr/bin/env python3
 
 from playwright.sync_api import sync_playwright
+from fastapi.middleware.cors import CORSMiddleware
 from bs4 import BeautifulSoup
 from fastapi import FastAPI
 from time import sleep
-import json
 
 app = FastAPI()
+
+origins = [
+    "http://localhost:5173",
+]
+
+# Add CORSMiddleware to your FastAPI app
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,  # Allows the frontend to make requests
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all HTTP methods (GET, POST, etc.)
+    allow_headers=["*"],  # Allows all headers
+)
 
 def scrape_data(data):
     soup = BeautifulSoup(data, 'html.parser')

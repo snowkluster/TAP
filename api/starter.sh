@@ -14,5 +14,7 @@ python3 filehash-virus.py &
 pid6=$!
 python3 combine_search.py &
 pid7=$!
-trap 'kill $pid2 $pid3 pid4 pid5 pid6 pid7' INT
-wait $pid2 $pid3 $pid4 $pid5 $pid6 $pid7
+python3 latest_ransom_post_api.py &
+pid8=$!
+trap 'kill $pid2 $pid3 pid4 pid5 pid6 pid7 pid8' INT
+wait $pid2 $pid3 $pid4 $pid5 $pid6 $pid7 $pid8
