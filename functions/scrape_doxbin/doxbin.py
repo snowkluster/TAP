@@ -58,7 +58,7 @@ def save_table_data(all_tables, filename):
             writer.writerows(rows)
 
 with sync_playwright() as p:
-    browser = p.firefox.launch(headless=False, slow_mo=1000)
+    browser = p.firefox.launch(headless=True, slow_mo=1000)
     context = browser.new_context(
         # user_agent=f"{user_agent}",
         color_scheme='dark',  # Emulate dark mode, doesn't work on firefox

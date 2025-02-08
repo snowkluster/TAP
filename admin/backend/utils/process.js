@@ -6,7 +6,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export const handleScriptExecution = (scriptName, scriptPath, processVariable, res, running) => {
-    const pythonPath = path.join(__dirname, '../../env/bin/python'); // Adjust this if needed
+    const pythonPath = path.join(__dirname, '../../../env/bin/python'); // Adjust this if needed
 
     if (running && !processVariable) {
         processVariable = spawn(pythonPath, [scriptPath], {
