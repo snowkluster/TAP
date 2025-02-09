@@ -13,6 +13,7 @@ app = FastAPI()
 
 origins = [
     "http://localhost:5173",
+    "http://portal.localhost"
 ]
 
 # Add CORSMiddleware to your FastAPI app
@@ -55,11 +56,11 @@ async def fetch_api_results(client: httpx.AsyncClient, api_name: str, base_url: 
             return {"error": error_msg}
 
     except httpx.TimeoutException as e:
-        error_msg = f"Timeout connecting to {api_name} at {base_url}"
+        error_msg = f"Timeout connecting to {api_name} at {base_url}, {e}"
         logger.error(error_msg)
         return {"error": error_msg}
     except httpx.ConnectError as e:
-        error_msg = f"Failed to connect to {api_name} at {base_url}"
+        error_msg = f"Failed to connect to {api_name} at {base_url}, {e}"
         logger.error(error_msg)
         return {"error": error_msg}
     except Exception as e:

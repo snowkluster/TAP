@@ -10,6 +10,7 @@ app = FastAPI()
 
 origins = [
     "http://localhost:5173",
+    "http://portal.localhost"
 ]
 
 # Add CORSMiddleware to your FastAPI app

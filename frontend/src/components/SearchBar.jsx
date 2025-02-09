@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { TextField, Button, Box } from '@mui/material';
+import { TextField, IconButton, Box } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
 
 const SearchBar = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -17,58 +18,78 @@ const SearchBar = ({ onSearch }) => {
   };
 
   return (
-    <Box sx={{ maxWidth: 600, margin: '0 auto', padding: 2 }}>
-      <form onSubmit={handleSubmit}>
+    <Box
+      sx={{
+        flex: '1 1 auto',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        bgcolor: '#2A2A2A',
+        color: '#E0E0E0',
+        padding: 4,
+      }}
+    >
+      <form
+        onSubmit={handleSubmit}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '8px', // Added gap between elements
+        }}
+      >
         <TextField
-          label="Search"
           variant="outlined"
-          fullWidth
+          placeholder="Search..."
           value={searchTerm}
           onChange={handleChange}
           sx={{
-            marginBottom: 2,
-            bgcolor: '#424242', // Darker background for input field
+            backgroundColor: '#424242',
+            borderRadius: '4px',
+            width: '600px',
+            height: '56px',
             '& .MuiInputBase-root': {
-              color: '#fff', // White text color inside the search box
+              color: '#fff',
+              height: '56px', // Explicitly set height to match IconButton
             },
-            // Default border color
             '& .MuiOutlinedInput-notchedOutline': {
-              borderColor: '#616161', // Default border color (gray)
+              borderColor: '#616161',
             },
-            // Hover state border color
             '&:hover .MuiOutlinedInput-notchedOutline': {
-              borderColor: '#FF9800', // Orange border on hover
+              borderColor: '#FF9800',
             },
-            // Focus state border color
             '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-              borderColor: '#FF9800', // Orange border on focus
+              borderColor: '#FF9800',
             },
-            // Label color when not focused
             '& .MuiInputLabel-root': {
-              color: '#fff', // White label text when not focused
+              color: '#fff',
             },
-            // Placeholder text color
             '& .MuiInputBase-input::placeholder': {
-              color: '#ffffff', // White placeholder text
+              color: '#ffffff',
+              opacity: 0.7, // Made placeholder slightly more visible
             },
           }}
-          placeholder="Search"
         />
-        <Button
+        <IconButton
           type="submit"
-          variant="contained"
-          color="warning"
-          fullWidth
           sx={{
-            height: '100%',
-            bgcolor: '#FF9800', // Button color
+            backgroundColor: '#FF9800',
+            borderRadius: '4px',
+            color: '#fff',
+            height: '56px',
+            width: '56px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            transition: 'background-color 0.2s', // Added transition for hover effect
             '&:hover': {
-              bgcolor: '#FB8C00', // Button hover effect
-            }
+              backgroundColor: '#F57C00', // Darker orange on hover
+            },
           }}
         >
-          Search
-        </Button>
+          <SearchIcon sx={{ fontSize: '24px' }} />
+        </IconButton>
       </form>
     </Box>
   );

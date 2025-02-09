@@ -10,15 +10,24 @@ import {
   ListItem, 
   ListItemText 
 } from '@mui/material';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useLocation } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from 'react';
 
 const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const location = useLocation();
 
   const toggleDrawer = (open) => {
     setDrawerOpen(open);
+  };
+
+  const handleTitleClick = (e) => {
+    if (location.pathname === '/') {
+      e.preventDefault();
+      window.location.reload();
+    }
+    // If not on home page, let RouterLink handle the navigation naturally
   };
 
   const menuItems = [
@@ -26,8 +35,8 @@ const Navbar = () => {
     { text: 'Darknet Feed', link: '/darknet-feed' },
     { text: 'IP & Hash', link: '/ip-hash' },
     { text: 'Live Search', link: '/live-search' },
-    { text: 'Admin Panel', link: 'http://localhost:3001', external: true }, // External link for Admin Panel
-    { text: 'Ransomware Post', link: '/ransomware-post' }, // New route for Ransomware Post
+    { text: 'Admin Panel', link: 'http://localhost:3001', external: true },
+    { text: 'Ransomware Post', link: '/ransomware-post' },
     { text: 'Cybersecurity News', link: '/cybersecurity-news' }
   ];
 
@@ -41,11 +50,14 @@ const Navbar = () => {
         <Toolbar>
           <Typography 
             variant="h6" 
-            component="div" 
+            component={RouterLink} 
+            to="/"
+            onClick={handleTitleClick}
             sx={{ 
               flexGrow: 1, 
               color: '#FF9800',
-              fontWeight: 'bold'
+              fontWeight: 'bold',
+              textDecoration: 'none'
             }}
           >
             Threat Analysis Platform
@@ -104,22 +116,20 @@ const Navbar = () => {
               Live Search
             </Button>
           </Box>
-          {/* Hamburger menu icon on the right */}
           <IconButton 
             edge="end" 
             color="inherit" 
             aria-label="menu" 
             onClick={() => toggleDrawer(true)}
-            sx={{ ml: 'auto' }} // Align icon to the right
+            sx={{ ml: 'auto' }}
           >
             <MenuIcon />
           </IconButton>
         </Toolbar>
       </AppBar>
 
-      {/* Sidebar Drawer on the Right */}
       <Drawer
-        anchor="right"  // Position it on the right side
+        anchor="right"
         open={drawerOpen}
         onClose={() => toggleDrawer(false)}
         sx={{
@@ -132,7 +142,6 @@ const Navbar = () => {
         <List sx={{ width: 250 }}>
           {menuItems.map((item, index) => (
             <ListItem 
-              button 
               key={index} 
               component={item.external ? 'a' : RouterLink}
               href={item.external ? item.link : undefined}
@@ -141,7 +150,8 @@ const Navbar = () => {
               sx={{
                 '&:hover': { 
                   backgroundColor: 'rgba(255,255,255,0.1)' 
-                }
+                },
+                cursor: 'pointer'
               }}
             >
               <ListItemText primary={item.text} sx={{ color: '#E0E0E0' }} />

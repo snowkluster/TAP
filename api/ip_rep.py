@@ -9,15 +9,15 @@ app = FastAPI()
 
 origins = [
     "http://localhost:5173",
+    "http://portal.localhost"
 ]
 
-# Add CORSMiddleware to your FastAPI app
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,  # Allows the frontend to make requests
+    allow_origins=origins,
     allow_credentials=True,
-    allow_methods=["*"],  # Allows all HTTP methods (GET, POST, etc.)
-    allow_headers=["*"],  # Allows all headers
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 class IPCheckResult(BaseModel):

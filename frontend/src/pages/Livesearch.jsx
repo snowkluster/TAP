@@ -81,7 +81,7 @@ const Livesearch = () => {
           display: 'none'
         },
         // Hide scrollbar for IE, Edge and Firefox
-        '-ms-overflow-style': 'none',
+        'msOverflowStyle': 'none',
         scrollbarWidth: 'none'
       }}>
         <Container maxWidth="xl" disableGutters>
