@@ -35,7 +35,7 @@ const Navbar = () => {
     { text: 'Darknet Feed', link: '/darknet-feed' },
     { text: 'IP & Hash', link: '/ip-hash' },
     { text: 'Live Search', link: '/live-search' },
-    { text: 'Admin Panel', link: 'http://localhost:3001', external: true },
+    { text: 'Admin Panel', link: 'http://dashboard.localhost', external: true },
     { text: 'Ransomware Post', link: '/ransomware-post' },
     { text: 'Cybersecurity News', link: '/cybersecurity-news' }
   ];
