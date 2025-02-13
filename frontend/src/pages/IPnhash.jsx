@@ -43,10 +43,10 @@ const IPnhash = () => {
   const preparePieData = (blocklists) => {
     if (!blocklists) return [];
     const listed = Object.entries(blocklists)
-      .filter(([_, value]) => value)
+      .filter(([, value]) => value)
       .map(([name]) => name);
     const notListed = Object.entries(blocklists)
-      .filter(([_, value]) => !value)
+      .filter(([, value]) => !value)
       .map(([name]) => name);
   
     return [
