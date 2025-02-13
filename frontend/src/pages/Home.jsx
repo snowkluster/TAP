@@ -293,18 +293,37 @@ const Home = () => {
           borderBottom: searchResults.length > 0 ? '1px solid #424242' : 'none',
         }}
       >
-        <TextField
-          variant="outlined"
-          placeholder="Search..."
+<TextField
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+          variant="outlined"
+          placeholder="Search..."
           sx={{
             backgroundColor: '#424242',
             borderRadius: '4px',
-            marginRight: 0,
             width: '750px',
             height: '56px',
+            '& .MuiInputBase-root': {
+              color: '#fff',
+              height: '56px', // Explicitly set height to match IconButton
+            },
+            '& .MuiOutlinedInput-notchedOutline': {
+              borderColor: '#616161',
+            },
+            '&:hover .MuiOutlinedInput-notchedOutline': {
+              borderColor: '#FF9800',
+            },
+            '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+              borderColor: '#FF9800',
+            },
+            '& .MuiInputLabel-root': {
+              color: '#fff',
+            },
+            '& .MuiInputBase-input::placeholder': {
+              color: '#ffffff',
+              opacity: 0.7, // Made placeholder slightly more visible
+            },
           }}
         />
         <IconButton
