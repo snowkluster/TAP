@@ -109,9 +109,17 @@ const IPnhash = () => {
             height: '100vh',
           }}
         >
-          <Typography variant="h3" component="h1" align="center" sx={{ mb: 4, fontWeight: 'bold', color: '#FF9800' }}>
+          <Typography variant="h3" component="h1" align="center" sx={{ mb: 3, fontWeight: 'bold', color: '#FF9800' }}>
             Hash Reputation Check
           </Typography>
+          <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+            <Typography 
+              variant="body2"
+              sx={{ maxWidth: '600px', textAlign: 'center', color: '#B0B0B0', mb: -3 }}
+            >
+              Search any MD5, SHA1, SHA256 Hash for details
+            </Typography>
+          </Box>
 
           <SearchBar onSearch={handleHashSearch} />
 
@@ -180,9 +188,17 @@ const IPnhash = () => {
             height: '100vh',
           }}
         >
-          <Typography variant="h3" component="h1" align="center" sx={{ mb: 4, fontWeight: 'bold', color: '#FF9800' }}>
+          <Typography variant="h3" component="h1" align="center" sx={{ mb: 3, fontWeight: 'bold', color: '#FF9800' }}>
             IP Reputation Check
           </Typography>
+          <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+            <Typography 
+              variant="body2"
+              sx={{ maxWidth: '600px', textAlign: 'center', color: '#B0B0B0', mb: -3 }}
+            >
+              Search any IPv4 address
+            </Typography>
+          </Box>
 
           <SearchBar onSearch={handleIpSearch} />
 
