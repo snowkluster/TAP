@@ -53,9 +53,17 @@ const Livesearch = () => {
     }}>
       <Container maxWidth="xl" disableGutters sx={{ flex: '0 0 auto' }}>
         <Box sx={{ py: 3 }}>
-          <Typography variant="h3" component="h1" align="center" sx={{ mb: 4, fontWeight: 'bold', color: '#FF9800' }}>
+          <Typography variant="h3" component="h1" align="center" sx={{ mb: 2, fontWeight: 'bold', color: '#FF9800' }}>
             Live Search
           </Typography>
+          <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+            <Typography 
+              variant="body2"
+              sx={{ maxWidth: '600px', textAlign: 'center', color: '#B0B0B0', mb: -3 }}
+            >
+              Search all active forums for live results
+            </Typography>
+          </Box>
 
           <SearchBar onSearch={handleSearch} />
 

@@ -27,7 +27,6 @@ const Navbar = () => {
       e.preventDefault();
       window.location.reload();
     }
-    // If not on home page, let RouterLink handle the navigation naturally
   };
 
   const menuItems = [
@@ -48,46 +47,55 @@ const Navbar = () => {
         borderBottom: '1px solid #333' 
       }}>
         <Toolbar>
-          {/* SVG Logo wrapped with RouterLink */}
           <RouterLink to="/" onClick={handleTitleClick}>
             <Box
               component="svg"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 200 200"
-              width="1.5em" // Match the height of the text
-              height="1.5em" // Match the height of the text
+              width="1.5em"
+              height="1.5em"
               sx={{ 
-                mr: 1, // Add some margin to the right
-                verticalAlign: 'middle' // Align with the text
+                mr: 1,
+                verticalAlign: 'middle'
               }}
             >
-              {/* Background shield */}
-              <path d="M100 10 L180 50 L180 120 C180 160 140 190 100 190 C60 190 20 160 20 120 L20 50 Z" 
-                    fill="#2C2C2C" 
-                    stroke="#404040" 
-                    strokeWidth="2"/>
-              
-              {/* Radar sweep animation */}
-              <circle cx="100" cy="100" r="70" 
-                      fill="none" 
-                      stroke="#FF9800" 
-                      strokeWidth="2">
-                <animate attributeName="stroke-dasharray"
-                         values="0,440;440,440"
-                         dur="3s"
-                         repeatCount="indefinite"/>
-              </circle>
-              
-              {/* Center eye/lens */}
-              <circle cx="100" cy="100" r="30" 
-                      fill="#FF9800"/>
-              <circle cx="100" cy="100" r="25" 
-                      fill="#F57C00"/>
-              
-              {/* Digital dots */}
-              <circle cx="145" cy="75" r="5" fill="#FF5722"/>
-              <circle cx="55" cy="125" r="5" fill="#FF9800"/>
-              <circle cx="130" cy="145" r="5" fill="#FFA726"/>
+              <defs>
+                <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur in="SourceAlpha" stdDeviation="5" result="blur"/>
+                  <feOffset in="blur" dx="0" dy="0" result="offsetBlur"/>
+                  <feFlood floodColor="#FF9800" floodOpacity="0.75" result="glowColor"/>
+                  <feComposite in="glowColor" in2="offsetBlur" operator="in" result="glow"/>
+                  <feMerge>
+                    <feMergeNode in="glow"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+              </defs>
+              <g filter="url(#glow)">
+                <path d="M100 10 L180 50 L180 120 C180 160 140 190 100 190 C60 190 20 160 20 120 L20 50 Z" 
+                      fill="#2C2C2C" 
+                      stroke="#404040" 
+                      strokeWidth="2"/>
+                
+                <circle cx="100" cy="100" r="70" 
+                        fill="none" 
+                        stroke="#FF9800" 
+                        strokeWidth="2">
+                  <animate attributeName="stroke-dasharray"
+                           values="0,440;440,440"
+                           dur="3s"
+                           repeatCount="indefinite"/>
+                </circle>
+                
+                <circle cx="100" cy="100" r="30" 
+                        fill="#FF9800"/>
+                <circle cx="100" cy="100" r="25" 
+                        fill="#F57C00"/>
+                
+                <circle cx="145" cy="75" r="5" fill="#FF5722"/>
+                <circle cx="55" cy="125" r="5" fill="#FF9800"/>
+                <circle cx="130" cy="145" r="5" fill="#FFA726"/>
+              </g>
             </Box>
           </RouterLink>
 
@@ -101,9 +109,9 @@ const Navbar = () => {
               color: '#FF9800',
               fontWeight: 'bold',
               textDecoration: 'none',
-              display: 'inline-flex', // Use inline-flex to align SVG and text
-              alignItems: 'center', // Vertically center the SVG and text
-              lineHeight: '1.5em' // Match the SVG height
+              display: 'inline-flex',
+              alignItems: 'center',
+              lineHeight: '1.5em'
             }}
           >
             Threat Analysis Platform

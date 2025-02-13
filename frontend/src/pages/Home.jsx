@@ -194,25 +194,88 @@ const Home = () => {
       </Box>
 
       {!hasSearched && (
-        <>
-          <Typography
-            variant="h2"
-            component="h1"
-            sx={{
-              mb: 1,
-              fontWeight: 'bold',
-              color: '#FF9800',
-            }}
-          >
-            Threat Search
-          </Typography>
+        <Box sx={{ 
+          display: 'flex', 
+          flexDirection: 'column', 
+          alignItems: 'center',
+          mb: 0
+        }}>
+          <Box sx={{ 
+            display: 'flex', 
+            alignItems: 'center', 
+            gap: 4,
+            mb: 2
+          }}>
+            <svg 
+              width="64" 
+              height="64" 
+              viewBox="0 0 200 200"
+              style={{ flexShrink: 0 }}
+            >
+              <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="5" result="blur"/>
+                <feOffset in="blur" dx="0" dy="0" result="offsetBlur"/>
+                <feFlood floodColor="#FF9800" floodOpacity="0.75" result="glowColor"/>
+                <feComposite in="glowColor" in2="offsetBlur" operator="in" result="glow"/>
+                <feMerge>
+                  <feMergeNode in="glow"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+              <g filter="url(#glow)">
+                <path 
+                  d="M100 10 L180 50 L180 120 C180 160 140 190 100 190 C60 190 20 160 20 120 L20 50 Z" 
+                  fill="#2C2C2C" 
+                  stroke="#404040" 
+                  strokeWidth="2"
+                />
+                <circle 
+                  cx="100" 
+                  cy="100" 
+                  r="70" 
+                  fill="none" 
+                  stroke="#FF9800" 
+                  strokeWidth="2"
+                >
+                  <animate 
+                    attributeName="stroke-dasharray"
+                    values="0,440;440,440"
+                    dur="3s"
+                    repeatCount="indefinite"
+                  />
+                </circle>
+                <circle cx="100" cy="100" r="30" fill="#FF9800"/>
+                <circle cx="100" cy="100" r="25" fill="#F57C00"/>
+                <circle cx="145" cy="75" r="5" fill="#FF5722"/>
+                <circle cx="55" cy="125" r="5" fill="#FF9800"/>
+                <circle cx="130" cy="145" r="5" fill="#FFA726"/>
+              </g>
+            </svg>
+
+            <Typography
+              variant="h2"
+              component="h1"
+              sx={{
+                fontWeight: 'bold',
+                color: '#FF9800',
+                lineHeight: 1.2,
+              }}
+            >
+              Threat Search
+            </Typography>
+          </Box>
+
           <Typography
             variant="body2"
-            sx={{ maxWidth: '600px', textAlign: 'center', color: '#B0B0B0' }}
+            sx={{ 
+              color: '#B0B0B0', 
+              maxWidth: '600px',
+              textAlign: 'center'
+            }}
           >
             Search across multiple threat databases including Bianlian, Breach, Cicada3301, and more.
           </Typography>
-        </>
+        </Box>
       )}
 
       <Box
@@ -235,12 +298,12 @@ const Home = () => {
           placeholder="Search..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
+          onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
           sx={{
             backgroundColor: '#424242',
             borderRadius: '4px',
             marginRight: 0,
-            width: '600px',
+            width: '750px',
             height: '56px',
           }}
         />
@@ -253,6 +316,9 @@ const Home = () => {
             height: '56px',
             width: '56px',
             ml: 1,
+            '&:hover': {
+              backgroundColor: '#F57C00',
+            },
           }}
         >
           <SearchIcon />
