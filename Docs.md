@@ -1,4 +1,13 @@
-- Remember that since there is a volume in the docker container it has to be 
-- doxbin blocked by NPTEL network but alt domain work, 
-- doxbin.org, doxbin.com -- killa
-- doxbin.net works --> scrapers a fucking working
+## Need to add documentation
+
+### Links
+
+- http://wn6vonooq6fggjdgyocp7bioykmfjket7sbp47cwhgubvowwd7ws5pyd.onion/
+- https://ransomwatch.telemetry.ltd/#/
+- https://www.ransomlook.io/
+- https://www.ransomware.live/
+
+## News Updates
+
+- god damn fbi toke down 3 sites that I was scrapping
+- https://www.bleepingcomputer.com/news/security/fbi-seizes-crackedio-nulledto-hacking-forums-in-operation-talent/

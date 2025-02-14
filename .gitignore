@@ -7,8 +7,4 @@ venv
 *.json
 *.zip
 *.pdf
-*.htm
-*.html
-paper
-rem.md
 node_modules

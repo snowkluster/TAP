@@ -5,7 +5,7 @@ import {
   CardContent, 
   CardHeader, 
   Typography, 
-  Grid,
+  Grid2,
   CircularProgress,
   Alert,
   Link
@@ -124,9 +124,9 @@ const RansomwarePost = () => {
         </Alert>
       )}
       
-      <Grid container spacing={2}>
+      <Grid2 container spacing={2}>
         {posts.map((post, index) => (
-          <Grid item xs={12} sm={6} md={4} key={index}>
+          <Grid2 item size={{xs:12, sm:6, md:4}} key={index}>
             <Card sx={{ 
               bgcolor: '#1A1A1A', 
               color: '#E0E0E0',
@@ -181,9 +181,9 @@ const RansomwarePost = () => {
                 </Typography>
               </CardContent>
             </Card>
-          </Grid>
+          </Grid2>
         ))}
-      </Grid>
+      </Grid2>
     </Box>
   );
 };

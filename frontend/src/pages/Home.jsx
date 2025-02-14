@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Box, Typography, TextField, IconButton, Card, CardContent, Grid, CircularProgress } from '@mui/material';
+import { Box, Typography, TextField, IconButton, Card, CardContent, Grid2, CircularProgress } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import axios from 'axios';
 
@@ -360,15 +360,15 @@ const Home = () => {
             mt: 4,
           }}
         >
-          <Grid container spacing={3}>
+          <Grid2 container spacing={3}>
             {searchResults.map((table, index) => (
-              <Grid item xs={12} key={index}>
+              <Grid2 size={{ xs:12}} key={index}>
                 <Typography variant="h6" sx={{ color: '#FF9800', mb: 2, textTransform: 'capitalize' }}>
                   {table.table_name}
                 </Typography>
-                <Grid container spacing={2}>
+                <Grid2 container spacing={2}>
                   {table.matches?.map((match, idx) => (
-                    <Grid item xs={12} sm={6} md={4} key={idx}>
+                    <Grid2 size={{xs:12, sm:6, md:4}} key={idx}>
                       <Card sx={{ 
                         backgroundColor: '#424242', 
                         color: '#E0E0E0',
@@ -379,12 +379,12 @@ const Home = () => {
                       }}>
                         {renderCardContent(match, table.table_name)}
                       </Card>
-                    </Grid>
+                    </Grid2>
                   ))}
-                </Grid>
-              </Grid>
+                </Grid2>
+              </Grid2>
             ))}
-          </Grid>
+          </Grid2>
         </Box>
       )}
 

@@ -1,4 +1,4 @@
-import { Box, Typography, Container, Button, Card, CardContent, Grid, CircularProgress, Snackbar, Alert, Tooltip } from '@mui/material';
+import { Box, Typography, Container, Button, Card, CardContent, Grid2, CircularProgress, Snackbar, Alert, Tooltip } from '@mui/material';
 import { useState } from 'react';
 import axios from 'axios';
 import FingerprintIcon from '@mui/icons-material/Fingerprint';
@@ -91,9 +91,9 @@ const Darknetfeed = () => {
         </Box>
 
         {/* Grid for Cards */}
-        <Grid container spacing={3}>
+        <Grid2 container spacing={3}>
           {data.map((ioc) => (
-            <Grid item key={ioc.sha256_hash} xs={12} sm={6} md={4} lg={3}>
+            <Grid2 item key={ioc.sha256_hash} size={{xs:12, sm:6, md:4, lg:3}}>
               <Card sx={{ backgroundColor: '#2C2C2C', color: '#E0E0E0', boxShadow: 3, borderRadius: 2, transition: 'transform 0.3s', '&:hover': { transform: 'scale(1.05)', boxShadow: 6 } }}>
                 <CardContent>
                   {/* Display each key-value pair */}
@@ -117,9 +117,9 @@ const Darknetfeed = () => {
                   ))}
                 </CardContent>
               </Card>
-            </Grid>
+            </Grid2>
           ))}
-        </Grid>
+        </Grid2>
 
         {/* Error Snackbar */}
         <Snackbar open={!!error} autoHideDuration={6000} onClose={handleCloseSnackbar}>
