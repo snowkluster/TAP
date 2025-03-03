@@ -1,4 +1,3 @@
-- onni scrapers are being rate limited need to fix
 - Work on Better SVG
 - Work on documentation
-- starter and cleanup script updates
+- instead of using fetch move to https://swr.vercel.app/ for better code

@@ -10,4 +10,5 @@
 ## News Updates
 
 - god damn fbi toke down 3 sites that I was scrapping
+- Onni forums has been taken down by some law enforcement, no claims for the take down have been made so far
 - https://www.bleepingcomputer.com/news/security/fbi-seizes-crackedio-nulledto-hacking-forums-in-operation-talent/

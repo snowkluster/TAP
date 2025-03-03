@@ -2,9 +2,9 @@
 
 #uvicorn breach_search_api:app --reload --host 0.0.0.0 --port 8001 &
 #pid1=$!
-uvicorn doxbin_search_api:app --reload --host 0.0.0.0 --port 8002 &
+uvicorn doxbin_search_api:app --host 0.0.0.0 --port 8002 &
 pid2=$!
-uvicorn nulled_search_api:app --reload --host 0.0.0.0 --port 8003 &
+uvicorn nulled_search_api:app --host 0.0.0.0 --port 8003 &
 pid3=$!
 python3 ip_rep.py &
 pid4=$!
