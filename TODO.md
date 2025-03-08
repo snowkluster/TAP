@@ -1,3 +1,3 @@
-- Work on Better SVG
 - Work on documentation
-- instead of using fetch move to https://swr.vercel.app/ for better code
+- instead of using fetch/axios move to https://swr.vercel.app/ for better code
+- https://threatview.io/ -- can be used for IP blocklist, add it

@@ -3,12 +3,10 @@ from fastapi.middleware.cors import CORSMiddleware
 import requests
 from typing import List, Dict
 import os
-from dotenv import load_dotenv  # Import dotenv to load environment variables
+from dotenv import load_dotenv
 
-# Load environment variables from the .env file
 load_dotenv()
 
-# Initialize FastAPI app
 app = FastAPI()
 
 origins = [
@@ -16,22 +14,19 @@ origins = [
     "http://portal.localhost"
 ]
 
-# Add CORSMiddleware to your FastAPI app
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,  # Allows the frontend to make requests
+    allow_origins=origins,
     allow_credentials=True,
-    allow_methods=["*"],  # Allows all HTTP methods (GET, POST, etc.)
-    allow_headers=["*"],  # Allows all headers
+    allow_methods=["*"],
+    allow_headers=["*"], 
 )
 
-# Read the API_KEY from an environment variable
-API_KEY = os.getenv("ABUSE_API_KEY")  # Read API key from .env
+API_KEY = os.getenv("ABUSE_API_KEY")
 
 if not API_KEY:
     raise ValueError("API_KEY is missing. Please set the 'ABUSE_API_KEY' in the .env file.")
 
-# Define helper function to process file data
 def process_file(file_data: Dict):
     required_keys = ['sha3_384_hash', 'sha256_hash', 'sha1_hash', 'md5_hash', 'first_seen', 'origin_country', 'file_size', 'file_type_mime', 'intelligence', 'tags', 'file_name']
     new_data = {key: file_data.get(key) for key in required_keys}
@@ -47,14 +42,13 @@ def process_file(file_data: Dict):
     new_data['IOC Name'] = file_name
     return new_data
 
-# Define the main function to fetch data from AbuseAPI and process it
 @app.get("/", response_model=List[Dict])
 async def fetch_and_process_data():
     url = "https://mb-api.abuse.ch/api/v1/"
     headers = {"Auth-Key": API_KEY}
     data = {
         "query": "get_recent",
-        "selector": "time"  # We can't change this value.
+        "selector": "time"
     }
     
     response = requests.post(url, headers=headers, data=data)
