@@ -29,7 +29,7 @@ app.add_middleware(
 # Configure the base URLs for each API with correct local ports
 API_ENDPOINTS = {
     # "breachforums": "http://localhost:8001/search/", # Will use later, if we make to many requests then it cause issues
-    "nulled": "http://localhost:8003/search/",
+    "breachforums": "http://localhost:8010/search/",
     "doxbin": "http://localhost:8002/search/"
 }
 

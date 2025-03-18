@@ -23,9 +23,10 @@ const Livesearch = () => {
     try {
       const response = await fetch(`http://localhost:8000/search/?search_term=${searchTerm}`);
       const data = await response.json();
+      console.log(data)
       if (data.successful) {
         const allResults = [
-          ...(data.successful.nulled || []).map(item => ({ ...item, platform: 'Nulled' })),
+          ...(data.successful.breachforums || []).map(item => ({ ...item, platform: 'breachforums' })),
           ...(data.successful.doxbin || []).map(item => ({ ...item, platform: 'Doxbin' })),
         ];
         setResults(allResults);
@@ -108,12 +109,14 @@ const Livesearch = () => {
             {results.map((item, index) => (
               <Grid2 item key={index} size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
                 <Card
-                  title={item.text || item.Title}
-                  url={item.url || item.Title_url}
-                  date={item.date || item.Added}
+                  author={item.author || item.Author}
+                  title={item.text || item.Title || item.post_name}
+                  url={item.url || item.Title_url || item.post_link}
+                  date={item.date || item.Added || item.post_date}
                   views={item.views || item.Views}
                   replies={item.replies || item.Comments}
                   platform={item.platform}
+                  
                   sx={{
                     height: 'auto',
                     width: '100%',

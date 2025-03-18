@@ -1,7 +1,7 @@
 import { Card as MuiCard, CardContent, Typography, Box, Link } from '@mui/material';
 import PropTypes from 'prop-types';
 
-const Card = ({ title, url, date, views, replies, platform, sx }) => {
+const Card = ({ title, url, author, date, views, replies, platform, sx }) => {
   return (
     <MuiCard 
       sx={{ 
@@ -48,6 +48,9 @@ const Card = ({ title, url, date, views, replies, platform, sx }) => {
           </Link>
         </Typography>
         <Typography variant="body2" color="gray">
+          <strong>Author: </strong>{author} 
+        </Typography>
+        <Typography variant="body2" color="gray">
           <strong>Date Added: </strong>{date}
         </Typography>
         <Typography variant="body2" color="gray">
@@ -66,6 +69,7 @@ const Card = ({ title, url, date, views, replies, platform, sx }) => {
 
 // Prop validation using PropTypes
 Card.propTypes = {
+  author: PropTypes.string,
   title: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,

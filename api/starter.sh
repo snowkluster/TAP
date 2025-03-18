@@ -4,11 +4,12 @@
 #pid1=$!
 uvicorn doxbin_search_api:app --host 0.0.0.0 --port 8002 &
 pid2=$!
-uvicorn nulled_search_api:app --host 0.0.0.0 --port 8003 &
+python3 breach_search_api.py &
 pid3=$!
 python3 ip_rep.py &
 pid4=$!
-python3 IOC.py &
+# python3 IOC.py &
+./IOC &
 pid5=$!
 python3 filehash-virus.py &
 pid6=$!

@@ -6,7 +6,7 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-API_KEY='XXXXXXXXXXXXX'
+API_KEY='2d694a0d2b7766e437fc85523be1affc1a6cd78ac5d86f1d77df57e8c2e89447'
 # FILE_HASH='c9bd511ee0e42e1f3f929496cbfbc254b1f49c8fb5806f1827c85a6cdaadab6d'
 FILE_HASH = str(input("Enter filehash: "))
 URL=f"https://www.virustotal.com/api/v3/files/{FILE_HASH}"

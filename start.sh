@@ -12,7 +12,7 @@ if [ "$1" = "stop" ]; then
     kill "$(lsof -t -i:3001)"
     echo "${Red}Stopping APIs${NC}"
     kill "$(lsof -t -i:8000)"
-    kill "$(lsof -t -i:8003)"
+    kill "$(lsof -t -i:8010)"
     kill "$(lsof -t -i:8002)"
     kill "$(lsof -t -i:8006)"
     kill "$(lsof -t -i:8004)"
@@ -29,11 +29,11 @@ echo "${Green}Starting Admin Panel${NC}"
 
 cd admin/frontend || exit
 
-npm run dev &
+# npm run dev &
 
 cd ../backend || exit
 
-node app.js &
+# node app.js &
 
 cd ../.. || exit
 
@@ -41,7 +41,7 @@ echo "${Green}Starting API's${NC}"
 
 cd api || exit
 
-./starter.sh &
+# ./starter.sh &
 
 cd .. || exit
 
@@ -49,7 +49,7 @@ echo "${Green}Starting Middleware${NC}"
 
 cd middleware || exit
 
-python3 api.py &
+# python3 api.py &
 
 cd .. || exit
 
@@ -57,7 +57,7 @@ echo "${Green}Starting Main Site${NC}"
 
 cd frontend || exit
 
-npm run dev &
+# npm run dev &
 
 echo "${Green}Starting All Containers${NC}"
 sudo docker compose up -d
