@@ -1,3 +1,3 @@
 #!/bin/sh
 
-go build IOC.go
+go build main.go

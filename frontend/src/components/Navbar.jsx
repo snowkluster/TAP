@@ -36,7 +36,8 @@ const Navbar = () => {
     { text: 'Live Search', link: '/live-search' },
     { text: 'Admin Panel', link: 'http://dashboard.localhost', external: true },
     { text: 'Ransomware Post', link: '/ransomware-post' },
-    { text: 'Cybersecurity News', link: '/cybersecurity-news' }
+    { text: 'Cybersecurity News', link: '/cybersecurity-news' },
+    { text: 'Under Construction', link: '/under-construction' }
   ];
 
   return (

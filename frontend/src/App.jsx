@@ -24,12 +24,13 @@ const App = () => {
         bgcolor: '#2A2A2A'
       }}>
         <Routes>
-          <Route path="/" element={<UnderConstruction />} />
+          <Route path="/" element={<Home />} />
           <Route path="/darknet-feed" element={<Darknetfeed />} />
           <Route path="/ip-hash" element={<IPnhash />} />
           <Route path="/live-search" element={<Livesearch />} />
-          <Route path="/ransomware-post" element={<UnderConstruction />} />
+          <Route path="/ransomware-post" element={<RansomwarePost />} />
           <Route path="/cybersecurity-news" element={<CybersecurityNews />} />
+          <Route path="/under-construction" element={<UnderConstruction />} />
         </Routes>
       </Box>
     </Box>
