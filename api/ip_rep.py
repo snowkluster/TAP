@@ -155,6 +155,13 @@ def is_ip_in_apache_list(ip_address, apache_content):
             return True
     return False
 
+def is_ip_in_threatview_list(ip_address, threatview_content):
+    for line in threatview_content.splitlines():
+        line = line.strip()
+        if line == ip_address:
+            return True
+    return False
+
 @app.get("/check_ip", response_model=IPCheckResult)
 async def check_ip(ip: str):
     if not is_valid_ip(ip):
@@ -171,6 +178,8 @@ async def check_ip(ip: str):
     url_ipsum = 'https://raw.githubusercontent.com/stamparm/ipsum/refs/heads/master/ipsum.txt'
     url_blocklist_de = 'https://www.blocklist.de/lists/all.txt'
     url_apache = 'https://www.blocklist.de/lists/apache.txt'
+    url_threatview = 'https://threatview.io/Downloads/IP-High-Confidence-Feed.txt'
+
 
     page_content_isc = get_page_content(url_isc)
     if page_content_isc and is_ip_on_page(ip, page_content_isc):
@@ -228,6 +237,13 @@ async def check_ip(ip: str):
     else:
         blocklist_results["Blocklist.de Apache"] = False
 
+    threatview_content = get_page_content(url_threatview)
+    if threatview_content and is_ip_in_threatview_list(ip, threatview_content):
+        blocklist_results["ThreatView"] = True
+        blocklist_count += 1
+    else:
+        blocklist_results["ThreatView"] = False
+    
     is_malicious = blocklist_count > 2
 
     result = IPCheckResult(

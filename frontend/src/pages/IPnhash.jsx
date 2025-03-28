@@ -84,7 +84,7 @@ const IPnhash = () => {
       disableGutters
       sx={{
         padding: 2,
-        height: '80vh',
+        height: '90vh',
         paddingTop: 2,
         paddingBottom: 2,
         px: 0,
@@ -249,12 +249,19 @@ const IPnhash = () => {
                 <Typography variant="subtitle1" sx={{ mt: 2, color: '#FF9800' }}>
                   Blocklists:
                 </Typography>
-                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
-                  {Object.entries(ipResult.blocklists).map(([blocklist, isListed]) => (
-                    <Typography key={blocklist} variant="body2">
-                      <strong>{blocklist}:</strong> {isListed ? 'Listed' : 'Not Listed'}
-                    </Typography>
-                  ))}
+                <Box sx={{ mt: 0 }}>
+                  <Typography variant="body1" sx={{ color: '#FF9800', mb: 1 }}>
+                    Listed: [{Object.entries(ipResult.blocklists)
+                      .filter(([, isListed]) => isListed)
+                      .map(([blocklist]) => blocklist)
+                      .join(', ')}]
+                  </Typography>
+                  <Typography variant="body1" sx={{ color: '#B0B0B0', mb: 1 }}>
+                    Not Listed: [{Object.entries(ipResult.blocklists)
+                      .filter(([, isListed]) => !isListed)
+                      .map(([blocklist]) => blocklist)
+                      .join(', ')}]
+                  </Typography>
                 </Box>
               </CardContent>
             </Card>

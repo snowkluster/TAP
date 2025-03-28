@@ -1,6 +1,2 @@
 - Work on documentation
-- instead of using fetch/axios move to https://swr.vercel.app/ for better code
-- https://threatview.io/ -- can be used for IP blocklist, add it
-- try moving all API to golang
-- Remove underconstruction pages
 - try to rename binary and not push them to github
