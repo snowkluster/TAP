@@ -1,2 +1,2 @@
-- Work on documentation
+- Work on documentation (API.md and configuration.md)
 - try to rename binary and not push them to github
