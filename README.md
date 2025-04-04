@@ -1,7 +1,7 @@
 # Threat Analysis Platform (TAP)
 
 ![GitLeaks](https://img.shields.io/badge/protected%20by-gitleaks-blue)
-[![License](https://img.shields.io/github/license/snowkluster/TAP)](./LICENSE)
+[![License](https://img.shields.io/github/license/snowkluster/tap)](./LICENSE)
 ![Version](https://img.shields.io/badge/version-1.0.0-blue)
 ![Build Status](https://img.shields.io/github/actions/workflow/status/snowkluster/TAP/main.yml)
 ![Docker](https://img.shields.io/badge/docker-ready-brightgreen)
