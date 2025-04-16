@@ -1,0 +1,10 @@
+- during operation talent, The FBI joined authorities across Europe to take down different cyber criminal forums such as `cracked.io` and `nulled.to`
+- The operation was conducted on the 30th and 31st of january
+- It also toke down a lot of different services such as : `StarkRDP.io` and `rdp.sh` that were heavily advertised on the different cyber crime as a way to get secure RDP instances without a trace
+- The operation also toke down local german forums that were used by cybercriminals such as `Sellix`
+- The sizure of all the forums were confirmed by the cracked admins on their telegram channel
+- Due to this a lot of scrapper were not functioning 
+- However because the platform uses storing scrapper and has stored a majority of its data in the SQLite backup database and the Postgres database
+- the majority of its features would not be effected
+- Also during a undeclared raid, the FBI and CIA may have taken down breachforums but reports are still unconfirmed
+- As of 16 may breachforums is down for last 2 days
