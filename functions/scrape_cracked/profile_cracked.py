@@ -123,7 +123,7 @@ def main():
         page = context.new_page()
         stealth_sync(page)
         # https://cracked.io/AIX
-        page.goto('https://cracked.io/HeavensPro')
+        page.goto('https://cracked.sh/HeavensPro')
         html_content = page.content()
         profile_data = extract_profile_data(html_content)
         print(json.dumps(profile_data, indent=4))

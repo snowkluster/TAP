@@ -1,2 +1,6 @@
 - Work on documentation (API.md and configuration.md)
 - try to rename binary and not push them to github
+- cracked.io has movied to cracked.sh, the scraper need to be tested to check if they work with the new site and its content
+- also check out `https://bhf.pro/` 
+- move all hardcoded values such as sites names and CSV path to `.env` for easy refactoring
+- 

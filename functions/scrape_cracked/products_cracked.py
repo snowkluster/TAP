@@ -148,7 +148,7 @@ with sync_playwright() as p:
     context.add_cookies(json.loads(Path("../../json/cracked_cookies.json").read_text()))
     page = context.new_page()
     stealth_sync(page)
-    page.goto("https://cracked.io/Forum-Products")
+    page.goto("https://cracked.sh/Forum-Products")
     csv_filename = '../../database/cracked_products.csv'
     while True:
         page.wait_for_timeout(3000)

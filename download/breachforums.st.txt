@@ -1,0 +1,32 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Hello everyone,  
+
+We would like to provide an update on recent events over the past two weeks. In or around April 15, we received confirmation of information that we had been suspecting since day 1 - a MyBB 0day. This confirmation came through trusted contacts that we are in touch with, which revealed that our forum (breachforums.st) is subject to infiltration by various agencies and other global law enforcement bodies.
+
+Upon learning of this, we immediately took action by shutting down our infrastructure and initiating our incident response procedures. Our findings indicate that, fortunately, our infrastructure were NOT compromised, and no data was infiltrated. Subsequently, we began auditing the MyBB source code and we believe we have identified the PHP exploit.
+
+We would like to sincerely apologize to the community and our staff for the lack of communication and transparency during this time. As you can appreciate, given the nature of our work, our priority had to be securing the safety of our infrastructure, staff, and the community above all else. Now that our incident response is complete, we are actively working on a complete rewrite of the forum backend.
+
+Finally, we would like to address the growing number of BreachForums clones and the various rumors circulating about us and our administrators. We want to reassure everyone that no members of our team have been arrested, and as previously mentioned, our infrastructure remains secure. We strongly advise against engaging with these BreachForums clones, as they are likely honeypots and cannot be trusted. Please exercise caution and be discerning in whom you trust and which services you use.
+
+Thank you for your understanding and continued support.
+
+Best regards,
+BreachForums Administration
+ 
+-----BEGIN PGP SIGNATURE-----
+
+iQGzBAEBCgAdFiEE6AwTCKCewa3EGMPwJXiYj2m8o/wFAmgPH6MACgkQJXiYj2m8
+o/ygUgwAjO/g2t4uIExjgFJ56AZ8d+hXxmuptGasyX5sVI/f5/6y8hq2STPkp4KZ
+xX1iOA+vlx+FSjHRx28Pnwyga/6vD/ewS/YxiW+/zNplI+3nWxJF5p2jXo8PbTEy
+KInTAqUmLll2fiY1vt/2UTXWn2ym6ZdJVfik8e8ABvFSY+WSYlLXe8GOR1VE2V/9
+J0fTvMDk29dCqGJDbJAyxCLzNBRcg7tgSmYfudEeTAhqYnzQgxKl2NpgOwnl3jmE
+cXjJUXobfXhJyjl4MS1jAc75tjEEC3whyrw22sN/pT8QBk9tZx9jW7AWVGw9V9Dk
+gzTKjsDoQEpBLAHI+MzrajaFS8s9j+qFbmVsnVjELR0OI/4EJl3qNw+SfFHHAnSz
+fQ/GrrYukjgZobPUENQR+i/1VgiZrD9O7vTF6G9uxBhrBiUvJJiePBFBTnx9r4Sh
+Y/2mG5RadG5U8CILQxAVx+4QveTGIA5He4Qa8Q02SKcnyd5EscWIB0s71i9KwUSd
+LUgOhAia
+=58qK
+-----END PGP SIGNATURE-----

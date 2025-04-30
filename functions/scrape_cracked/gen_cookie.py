@@ -73,7 +73,7 @@ with sync_playwright() as p:
     context.add_init_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
     page = context.new_page()
     # stealth_sync(page) # doesn't show the damn captcha, do not use for cookie gen
-    page.goto("https://cracked.io/member.php?action=login")
+    page.goto("https://cracked.sh/member.php?action=login")
     page.evaluate("window.__cfRLUnblockHandlers = true;")
     sleep(2.1435234)
     page.fill('input#username','tempmaxi')
