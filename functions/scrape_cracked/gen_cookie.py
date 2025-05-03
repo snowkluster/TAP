@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+import json
+from pathlib import Path
 import random
 from playwright.sync_api import sync_playwright
 from time import sleep
@@ -76,8 +78,10 @@ with sync_playwright() as p:
     page.goto("https://cracked.sh/member.php?action=login")
     page.evaluate("window.__cfRLUnblockHandlers = true;")
     sleep(2.1435234)
-    page.fill('input#username','tempmaxi')
-    page.fill('input#password','h83eDH35T4zsxn')
+    # page.fill('input#username','tempmaxi')
+    # page.fill('input#password','h83eDH35T4zsxn')
+    sleep(15)
     page.evaluate("document['getElementsByClassName']('member-full')[0]['submit']()")
-    # page.click('input[value="Login"]')
-    storage = context.storage_state(path="auth/state.json")
+    cookies = context.cookies()
+    Path("../../json/cracked_cookies.json").write_text(json.dumps(cookies))
+    sleep(10)
