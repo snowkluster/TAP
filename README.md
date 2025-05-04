@@ -15,7 +15,7 @@ TAP provides analyst access to multiple cyber crime forums in a single *TAP* all
 
 A comprehensive cybersecurity intelligence platform that aggregates, analyzes, and provides searchable access to data from various sources including dark web forums, breach databases, and ransomware posts.
 
-**Note The documentation of this project is still under work**
+**Note The documentation of this project is still under work and will be updated accordingly**
 
 ## Overview
 
