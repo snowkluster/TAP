@@ -50,13 +50,6 @@ The system consists of multiple components:
 
 ![System Design](./images/System%20Design.png)
 
-## Video Demonstration
-
-<div style="text-align: center;">
-  <video style="width:85%" controls src="https://github.com/user-attachments/assets/cc797079-ab20-4f66-b461-9ebc2c0fe839"></video>
-</div>
-![Watch the demo video](./video/output.mp4)
-
 
 ## Getting Started
 
