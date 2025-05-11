@@ -50,6 +50,8 @@ The system consists of multiple components:
 
 ![System Design](./images/System%20Design.png)
 
+## Video Demonstration
+
 ## Getting Started
 
 ### Prerequisites
