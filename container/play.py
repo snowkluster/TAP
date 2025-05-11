@@ -36,10 +36,10 @@ async def main():
     all_scraped_data = []
 
     async with async_playwright() as p:
-        browser = await p.firefox.launch(proxy={"server": "socks5://127.0.0.1:9050"}, headless=True, slow_mo=1000)
+        browser = await p.firefox.launch(proxy={"server": "socks5://127.0.0.1:9050"}, headless=False, slow_mo=1000)
         context = await browser.new_context(viewport={"width": 1400, "height": 800})
 
-        for page_number in range(1, 51):
+        for page_number in range(1, 9):
             page = await context.new_page()
             url = f"http://k7kg3jqxang3wh7hnmaiokchk7qoebupfgoik6rha6mjpzwupwtj25yd.onion/index.php?page={page_number}"
             

@@ -4,12 +4,14 @@ from typing import Optional
 from playwright.sync_api import sync_playwright
 import csv
 from bs4 import BeautifulSoup
+from time import sleep
 
 with sync_playwright() as p:
-    browser = p.firefox.launch(slow_mo=1000,headless=True,proxy={"server": "socks5://127.0.0.1:9050"})
+    browser = p.firefox.launch(slow_mo=1000,headless=False,proxy={"server": "socks5://127.0.0.1:9050"})
     context = browser.new_context(viewport={"width": 1400, "height": 800})
     page = context.new_page()
     page.goto("http://cicadabv7vicyvgz5khl7v2x5yygcgow7ryy6yppwmxii4eoobdaztqd.onion",wait_until="networkidle")
+    sleep(14)
     content = page.content()
     soup = BeautifulSoup(content, 'html.parser')
 

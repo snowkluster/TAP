@@ -52,6 +52,10 @@ The system consists of multiple components:
 
 ## Video Demonstration
 
+<div style="text-align: center;">
+  <video style="width:85%" controls src="video/G43-Final.mp4"></video>
+</div>
+
 ## Getting Started
 
 ### Prerequisites

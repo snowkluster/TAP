@@ -16,7 +16,7 @@ with open(csv_file, mode='w', newline='', encoding='utf-8') as file:  # type: Op
 
     with sync_playwright() as p:
         # Launch browser with proxy settings
-        browser = p.firefox.launch(slow_mo=1000, headless=True, proxy={"server": "socks5://127.0.0.1:9050"})
+        browser = p.firefox.launch(slow_mo=1000, headless=False, proxy={"server": "socks5://127.0.0.1:9050"})
         context = browser.new_context(viewport={"width": 1400, "height": 800})
         page = context.new_page()
 

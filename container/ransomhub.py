@@ -7,7 +7,7 @@ import csv
 
 async def main():
     async with async_playwright() as p:
-        browser = await p.firefox.launch(proxy={"server": "socks5://127.0.0.1:9050"}, headless=True, slow_mo=1000)
+        browser = await p.firefox.launch(proxy={"server": "socks5://127.0.0.1:9050"}, headless=False, slow_mo=1000)
         context = await browser.new_context(viewport={"width": 1400, "height": 800})
         page = await context.new_page()
         url = "http://ransomxifxwc5eteopdobynonjctkxxvap77yqifu2emfbecgbqdw6qd.onion"
