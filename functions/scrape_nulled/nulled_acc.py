@@ -47,7 +47,7 @@ def parse_forum_data(html_content):
 
     return extracted_data
 
-
+# remvoed due to operation talent
 def save_to_csv(scrape_data, filename):
     with open(filename, 'a', newline='', encoding='utf-8') as csvfile:
         fieldnames = ['post_name', 'post_author', 'post_author_url', 'post_link', 'post_date', 'views', 'replies']
