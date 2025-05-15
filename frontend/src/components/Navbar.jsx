@@ -29,6 +29,7 @@ const Navbar = () => {
     }
   };
 
+  {/* Routing Table */}
   const menuItems = [
     { text: 'Home', link: '/' },
     { text: 'Darknet Feed', link: '/darknet-feed' },
